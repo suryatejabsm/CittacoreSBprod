@@ -1,0 +1,27 @@
+.slds-grid.slds-wrap {
+    margin: -10px;
+}
+
+.slds-col.slds-size_1-of-2 {
+    padding: 10px;
+}
+
+.slds-col.slds-size_1-of-1 {
+    padding: 10px;
+}
+
+.slds-form-element {
+    margin-block-end: 10px;
+}
+
+.slds-form-element__label {
+    font-weight: bold;
+    inline-size: 200px;
+    text-align: left;
+    padding-inline-end: 10px;
+}
+
+.slds-form-element__static {
+    flex-grow: 1;
+    margin-inline-start: 10px;
+}

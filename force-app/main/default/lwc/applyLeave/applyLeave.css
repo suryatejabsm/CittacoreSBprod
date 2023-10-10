@@ -1,0 +1,87 @@
+.leave-balance-card .card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    width: 100%;
+    padding: 8px 16px;
+  }
+ 
+   .LeaveStyles.card {
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 30px;
+  }
+
+
+  .leave-type-name {
+  text-align: left;
+}
+
+  .granted-count {
+  text-align: right;
+}
+
+  .card-current {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+  }
+
+  .card-title {
+    text-align: center;
+    margin-top: 8px; /* Add space between "0" and "Balance" */
+  }
+
+  /* Additional styles for the card */
+  .card {
+    border: 1.5px solid #d3d3d3;
+    border-radius: 5px;
+    padding: 16px;
+    width: 240px; /* Adjust the width to your preference */
+    height: 200px; 
+  }
+
+  .header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.header-left {
+  font-weight: bold;
+}
+
+.header-right {
+  text-align: right;
+}
+
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: space-between;
+}
+
+.side-by-side p {
+  margin-right: 25px; /* Adjust the spacing between the <p> elements */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.side-by-side p.align-right {
+  margin-right: 0;
+  margin-left: auto;
+  text-align: right;
+}

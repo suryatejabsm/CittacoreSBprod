@@ -1,0 +1,55 @@
+<template>
+    <lightning-card title="Panel Manager">
+      <template if:true={panels}>
+        <lightning-datatable
+          key-field="Id"
+          data={panels}
+          columns={columns}
+          hide-checkbox-column="true"
+          onrowaction={handleRowAction}>>
+        </lightning-datatable>
+        
+       
+      </template>
+      <template if:false={panels}>
+        <p>No panels found.</p>
+      </template>
+      <template if:true={showCreateEditModal}>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+          aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+          <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+              <h2 id="modal-heading-01" class="slds-text-heading_medium">Panel Details</h2>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+              <!-- Form fields for creating or editing a panel -->
+              <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input label="Panel Name" value={panelName} onchange={handleInputChange} required></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                  <lightning-input label="Position Name" value={positionName} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  <lightning-input label="Interviewer 1" value={interviewer1} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  <lightning-input label="Interviewer 2" value={interviewer2} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                  <lightning-input label="Interviewer 3" value={interviewer3} onchange={handleInputChange}></lightning-input>
+                </div>
+              </div>
+            </div>
+            <footer class="slds-modal__footer">
+              <div class="slds-grid slds-grid_align-end">
+                <lightning-button label="Cancel" onclick={handleCancel} class="slds-m-right_x-small"></lightning-button>
+                <lightning-button label="Save" variant="brand" onclick={handleSave}></lightning-button>
+              </div>
+            </footer>
+          </div>
+        </section>
+      </template>
+    </lightning-card>
+  </template>

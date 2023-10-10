@@ -1,0 +1,30 @@
+<apex:page showHeader="false" standardStylesheets="false">
+    <apex:includeLightning />
+    <div id="dataTable" />
+    <script>
+    /**
+     * Function to create an LWC component dynamically.
+     * @param {String} componentName - Name of the LWC component to be created.
+     * @param {Object} config - Configuration object to be passed to the LWC component.
+     * @param {String} containerId - ID of the container where the LWC component should be rendered.
+     */
+    function createLWC(componentName, config, containerId) {
+        // Load the Lightning App containing the LWC component
+        $Lightning.use("c:CEMSApplication", function() {
+            // Create the LWC component
+            $Lightning.createComponent(
+                componentName,
+                config,
+                containerId,
+                function(cmp) {
+                    console.log('LWC Component Created.');
+                }
+            );
+        },);
+    }
+
+    // Call the createLWC function to create the Account View LWC component
+    createLWC("c:publicSite", {msg: "publicSite from LWC.", recordId: "{!$CurrentPage.parameters.recordId}"}, "dataTable");
+
+    </script>
+</apex:page>

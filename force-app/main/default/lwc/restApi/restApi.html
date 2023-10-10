@@ -1,0 +1,64 @@
+<template>
+    <lightning-card title="Job Openings" icon-name="standard:work_type_group">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                type="search"
+                label="Search Job Openings"
+                value={keyword}
+                onchange={handleSearch}
+            ></lightning-input>
+        </div>
+
+        <template if:true={jobOpenings}>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                    <tr>
+                        <th>Serial Number</th>
+                        <th>Name</th>
+                        <th>Roles & Responsibilities</th>
+                        <th>Skills</th>
+                        <th>Status</th>
+                        <th>Technololgy</th>
+                        <th>Job Location</th>
+                        <th>Available Vacancies</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={jobOpenings} for:item="jobOpening">
+                        <tr key={jobOpening.id}>
+                            <td>{jobOpening.serialNumber}</td>
+                            <td>{jobOpening.jobTitle}</td>
+                            <td>{jobOpening.jobDescription}</td>
+                            <td>{jobOpening.jobType}</td>
+                            <td>{jobOpening.jobStatus}</td>
+                            <td>{jobOpening.Technology}</td>
+                            <td>{jobOpening.jobLocation}</td>
+                            <td>{jobOpening.AvailableVacancies}</td>
+                            <td>{jobOpening.Experience}</td>
+                            <!-- <td>{jobOpening.serialNumber}</td>
+                            <td>{jobOpening.Name}</td>
+                            <td>{jobOpening.CEMS_Roles_and_Responsibilities__c}</td>
+                            <td>{jobOpening.CEMS_Skills__c}</td>
+                            <td>{jobOpening.CEMS_Status__c}</td>
+                            <td>{jobOpening.CEMS_Technology__c}</td>
+                            <td>{jobOpening.CEMS_Job_Location__c}</td>
+                            <td>{jobOpening.CEMS_Available_Vacancies__c}</td>
+                            <td>{jobOpening.CEMS_Experience__c}</td> -->
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+
+            <div class="slds-p-top_medium">
+                <lightning-button-group>
+                    <lightning-button label="Previous" onclick={handlePrevious}></lightning-button>
+                    <lightning-button label="Next" onclick={handleNext}></lightning-button>
+                </lightning-button-group>
+            </div>
+        </template>
+        <template if:false={jobOpenings}>
+            <p>No Job Openings Found</p>
+        </template>
+    </lightning-card>
+</template>

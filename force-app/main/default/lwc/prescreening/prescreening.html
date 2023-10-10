@@ -1,0 +1,27 @@
+<template>
+    <div class="custom-card">
+        <h1>Job Applications</h1>
+        <template if:true={jobApplications}>
+            <div class="custom-margin">
+                <ul class="slds-list_vertical-space">
+                    <template for:each={jobApplications} for:item="application">
+                        <li key={application.Id}>
+                            <div class="slds-media">
+                                <div class="slds-var-m-media__body">
+                                    <p><strong>Offered Position: </strong>{jobApplication.CEMS_Job_Application__c.Offered_Position__c}</p>
+                                    <p><strong>Email: </strong>{jobApplication.CEMS_Job_Application__c.CEMS_Email__c}</p>
+                                    <p><strong>First Name: </strong>{jobApplication.CEMS_Job_Application__c.CEMS_First_Name__c}</p>
+                                    <p><strong>Job Application ID: </strong>{jobApplication.CEMS_Job_Application__c.Name}</p>
+                                    
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </template>
+        <div class="custom-margin">
+            <lightning-button class="custom-button" label="Submit" onclick={handleSubmit}></lightning-button>
+        </div>
+    </div>
+</template>

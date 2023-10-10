@@ -1,0 +1,87 @@
+<template>
+    <c-custom-toast-messages></c-custom-toast-messages>
+  
+        <template if:true={skills}>
+            <div class="slds-card" style="padding:10px;">
+            <div class="feedback-comment-container">
+                <h5 class="slds-text-heading_medium  slds-card "  >
+                   <!--<lightning-icon icon-name="standard:feedback" size="medium"
+                        class="slds-m-right_small"></lightning-icon>-->
+                    Technical Skills Feedback
+                </h5>
+            </div>
+
+            <div class="container">
+                  <div style="position:absolute;top:100px;text-align:center;margin-left:-55%;">
+
+      </div>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout" style="border: 1px solid #d8dde6 !important;">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <span style="color: rgba(69, 69, 210, 0.856);">Skills</span>
+                            </th>
+                            <th scope="col">
+                                <span style="color: rgba(69, 69, 210, 0.856);">Rating</span>
+                            </th>
+                            <th scope="col">
+                                <span style="color: rgba(69, 69, 210, 0.856);">Comments</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={skills} for:item="skill">
+                            <tr key={skill}>
+                                <td>{skill}</td>
+                                <td>
+                                    <div class="rating-container">
+                                        <lightning-input type="number" min="0" max="5" step="1" data-skill={skill}
+                                            onchange={handleRatingChange} class="rating-input" readonly={readOnlyMode} ></lightning-input>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="comment-container">
+                                        <lightning-input type="text" max-length="100" data-skill={skill}
+                                            onchange={handleCommentChange} class="comment-textarea" readonly={readOnlyMode}>
+                                        </lightning-input>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="feedback-comment-container">
+                    <h2 class="slds-text-heading_medium slds-card ">
+                        <!--<lightning-icon icon-name="standard:feedback" size="small"
+                            class="slds-m-right_small"></lightning-icon>-->
+                        Feedback Comment
+                    </h2>
+                <div class="comment-container">
+                    <lightning-textarea class="feedback-comment-textarea" value={feedbackComment}
+                        placeholder="Enter your feedback comment"
+                        onchange={handleFeedbackCommentChange}></lightning-textarea>
+                </div>
+            </div>
+           <br/>
+            <div class="slds-grid">
+                <div class="slds-col slds-text-align_left">
+                    <lightning-button label="Reset Feedback" onclick={handleReset}
+                        variant="destructive-text" disabled={feedbackSubmitted}></lightning-button>
+                </div>
+                <div class="slds-col slds-text-align_right">
+                    <lightning-button label="Save Feedback" onclick={handleSave}
+                        variant="brand-outline" disabled={feedbackSubmitted}></lightning-button>
+               </div>   
+            </div>
+        </div>
+        </template>
+   
+    <template if:true={noSkillsFound}>
+        <div class="slds-card slds-p-around_medium">
+            <div class="slds-card__body">
+                <p>No skills found.</p>
+            </div>
+        </div>
+    </template>
+</template>

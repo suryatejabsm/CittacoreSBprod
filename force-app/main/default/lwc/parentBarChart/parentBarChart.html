@@ -1,0 +1,7 @@
+<template>
+    <lightning-card title="Job Openings" icon-name="utility:chart">
+        <template if:true={chartConfiguration}>
+            <c-child-barchart chart-config={chartConfiguration}></c-child-barchart>
+        </template>
+    </lightning-card>
+</template>

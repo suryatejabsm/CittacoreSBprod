@@ -1,0 +1,79 @@
+<template>
+	<div>
+		<div style="position:absolute;top:100px;text-align:center;margin-left:-55%;">
+			<c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+		</div>
+		<div class="container">
+			<template if:false={isLoggedIn}>
+				<lightning-button class="myButton" label="LOGIN" variant="brand" onclick={handleLogin}
+					style="margin:10px;">
+          </lightning-button>
+		  				<div style="position:fixed;left:0px;margin-top:32px;">
+					<c-public-site-sidebar email={loggedInEmail} isloggedin={loggedInAfter}></c-public-site-sidebar>
+		  				</div>
+			</template>
+			<template if:true={isLoggedIn}>
+				<div class="avatar-container1" style="margin-top:20px;">
+					<lightning-avatar src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+						variant="circle" fallback-icon-name="standard:user"></lightning-avatar><!-- Basic -->
+					<p class="email">{email}</p>
+					<a class="logout" onclick={handleLogout}><strong>Logout</strong></a>
+				</div>
+				<br/>
+				<div style="position:fixed;left:0px;margin-top:-10px;">
+					<c-public-site-sidebar email={loggedInEmail} isloggedafter={isLoggedIn}></c-public-site-sidebar>
+					<!-- <c-cems-testnavigation email={email}></c-cems-testnavigation> -->
+
+
+				</div>
+			</template>
+		</div>
+		<div class="popup-overlay" if:true={isPopupOpen} style="z-index:999999999999999999999999999999;">
+			<div class="popup-container">
+				<div class="popup-header">
+					<lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close"
+						onclick={handleClose} style="height:20px;width:20px;margin-bottom:10px;color:red;">
+					</lightning-button-icon>
+				</div>
+				<!-- login form -->
+				<template if:true={showLoginPage}>
+					<lightning-card title="Login">
+						<div class="slds-p-around_medium">
+							<div class="slds-form-element">
+								<label class="slds-form-element__label" style="margin-left:10px">Employee ID</label>
+								<div class="slds-form-element__control">
+									<lightning-input type="text" data-id="username"></lightning-input>
+								</div>
+							</div>
+							<br/>
+							<div class="slds-form-element">
+								<label class="slds-form-element__label" style="margin-left:10px">Email ID</label>
+								<div class="slds-form-element__control">
+									<lightning-input type="text" data-id="emailid"></lightning-input>
+								</div>
+							</div>
+							<br/>
+
+							<lightning-button label="Generate OTP" onclick={handleOtp} variant="brand"
+								style="margin-left:10px"></lightning-button>
+						</div>
+					</lightning-card>
+				</template>
+				<template if:true={isOtpGenerated}>
+					<lightning-card>
+						<div class="slds-p-around_medium">
+							<div class="slds-form-element">
+								<label class="slds-form-element__label">Enter OTP</label>
+								<div class="slds-form-element__control">
+									<lightning-input type="text" data-id="otp"></lightning-input>
+								</div>
+							</div>
+							<br />
+							<lightning-button label="submit" onclick={validateOtp} variant="brand"></lightning-button>
+						</div>
+					</lightning-card>
+				</template>
+			</div>
+		</div>
+	</div>
+</template>

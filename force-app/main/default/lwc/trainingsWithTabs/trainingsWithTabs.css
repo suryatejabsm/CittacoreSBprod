@@ -1,0 +1,17 @@
+.hamburger{
+    color:#000000;
+    background-color:#f3f3f3;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    border-radius: 2px;;
+    padding: 6px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    top:85px;
+    width:83vw;
+    font-size:medium;
+    text-transform: capitalize;
+    font-weight: bold;
+    position:fixed;
+    left:200px;
+  }

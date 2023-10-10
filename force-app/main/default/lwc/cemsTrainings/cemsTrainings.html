@@ -1,0 +1,34 @@
+<template>
+    <div class="slds-grid slds-card">
+            <template for:each={currentItems} for:item="training">
+                <div key={training.Id} class="slds-card empTraining">
+                    <p><strong>Employee Name:</strong> {training.CEMS_Employee_Name__r.Name}</p>
+                    <p><strong>Learning Name:</strong> {training.CEMS_Learning_Name__r.CEMS_Learning_Name__c}</p>
+                    <p><strong>Certification Name:</strong> {training.CEMS_Certification_Name__r.CEMS_Certificate_Name__c}</p>
+                    <p><strong>Status:</strong> {training.CEMS_Status__c}</p>
+                    <p><strong>Due Date:</strong> {training.CEMS_Due_Date__c}</p>
+                </div>
+            </template>
+    </div>
+    
+    <div class="slds-grid" style="margin-top:8px;">
+        <div class="slds-col">
+          <lightning-button icon-name="utility:left" variant="base" label="First" onclick={goToFirstRecord} disabled={isFirstRecord}>First</lightning-button>
+        </div>
+        <div class="slds-col">
+          <lightning-button icon-name="utility:left" variant="base" label="Previous" onclick={goToPreviousPage} disabled={isFirstPage} style="float:right;">Previous</lightning-button>
+          </div>
+        <div class="slds-col">
+          <div class="slds-text-align_center" style="margin-top:6px;color:#3865B3;font-weight:bold;">
+           <span>Page - {currentPage}</span> 
+          </div>
+        </div>
+        <div class="slds-col">
+          <lightning-button variant="base" icon-name="utility:right" label="Next" onclick={goToNextPage} disabled={isLastPage} style="float:right;">Next</lightning-button>
+      </div>
+      <div class="slds-col">
+          <lightning-button variant="base" icon-name="utility:right" label="Last" onclick={goToLastRecord} disabled={isLastRecord}  style="float:right;">Last</lightning-button>
+
+      </div>
+      </div>
+</template>

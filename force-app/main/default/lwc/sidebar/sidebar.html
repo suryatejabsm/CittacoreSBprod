@@ -1,0 +1,94 @@
+<template>
+	<lightning-card>
+
+		<lightning-layout class="scrollcontent">
+			<lightning-layout-item class="llitem">
+				<lightning-vertical-navigation selected-item={selectedItem} onselect={changeHandleAction}
+					>
+					<lightning-vertical-navigation-section class="sidebarnav" >
+						<lightning-vertical-navigation-item label="Cittacore" name="cittacore" class="borderbtm" style="padding-top:0;top:0;margin-top:-15px;">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="Job Openings" name="jobopenings" class="borderbtm">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="Job Applications" name="jobapplications" class="borderbtm">
+						</lightning-vertical-navigation-item>
+						<!-- <lightning-vertical-navigation-item label="Prescreening" name="Prescreening" class="borderbtm">
+						</lightning-vertical-navigation-item> -->
+						<lightning-vertical-navigation-item label="Interview Schedule" name="interviewschedule" class="borderbtm">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="Dashboard" name="dashboard" class="borderbtm">
+						</lightning-vertical-navigation-item>
+						<!-- <lightning-vertical-navigation-item label="Salesforce LWC" name="salesforceLwc" class="borderbtm">
+						</lightning-vertical-navigation-item> -->
+					</lightning-vertical-navigation-section>
+				</lightning-vertical-navigation>
+			</lightning-layout-item>
+			<div class="slds-p-around_medium">
+				<lightning-layout-item>
+					<h2 class="slds-section-title--divider" style="background:#eee; margin-bottom:10px;margin-top:-30px;">
+						<b class="hamburger"><span class="hamburger">{currentContent}</span></b>
+					</h2>
+					<template if:true={cittacoreValue}>
+						<div class="tabContent1">
+							<c-flow-carousel></c-flow-carousel>
+						</div>
+					</template>
+
+					<template if:true={jobopeningsValue}>
+						<div class="tabContent1">
+							<c-internal-job-openings></c-internal-job-openings>
+						</div>
+
+					</template>
+
+					<template if:true={jobapplicationsValue}>
+						<div class="tabContent1">
+							<c-cems-job-application></c-cems-job-application>
+
+						</div>
+					</template>
+					<template if:true={Prescreening2}>
+						<div class="tabContent1">
+							<c-Prescreening2></c-prescreening2>
+
+						</div>
+					</template>
+
+					<template if:true={interviewscheduleValue}>
+						<div class="tabContent1" style="max-width:81vw;">
+							<c-cems-scheduler></c-cems-scheduler>
+						</div>
+					</template>
+
+					<template if:true={dashboardValue}>
+						<div class="tabContent1">
+							<c-parent-bar-chart></c-parent-bar-chart>
+							<!-- <iframe src={url} height={height} width={width} allow-scripts title="techdicer"></iframe> -->
+						</div>
+					</template>
+
+					<template if:true={salesforceLwcValue}>
+						<div class="tabContent1">
+							<c-testing-report></c-testing-report>
+						</div>
+					</template>
+					<!-- <c-cems-footer style="z-index: 999999999999999999999999999;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+	left:-10px;
+	z-index:0;
+	height:auto;
+"></c-cems-footer> -->
+				</lightning-layout-item>
+			</div>
+
+		</lightning-layout>
+
+		<!--End RelatedTopics Section-->
+
+		<!-- </div> -->
+
+	</lightning-card>
+
+</template>

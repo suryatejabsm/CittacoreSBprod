@@ -1,0 +1,47 @@
+/* .card-container {
+  padding: 15px;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+.slds-card .empTraining {
+  width: 235px; /* Adjust the width as per your requirement */
+  height: 125px; /* Adjust the height as per your requirement */
+  margin: 2px 2px 5px 5px;
+  padding: 5px;
+  border-top: 5px solid #032D60;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.slds-card .empTraining:hover {
+  /* background-color:#6d9ef8; */
+  background-color: rgba(0, 0, 0, .25);
+  font-weight:bold;
+
+  }
+/* .card {
+  padding: 20px;
+  margin-bottom: 20px;
+  width: calc(33.33% - 40px);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 20px;
+  width: 250px;
+  box-shadow: 0 4px 6px rgba(236, 4, 4, 0.2);
+  border-top: 5px solid red;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.card p {
+  margin-bottom: 15px;
+}
+
+.card:hover {
+  background-color: #70dced7f;
+} */

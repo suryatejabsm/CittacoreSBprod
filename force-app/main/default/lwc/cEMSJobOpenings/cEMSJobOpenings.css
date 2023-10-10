@@ -1,0 +1,59 @@
+.dummy{
+    color : blue;
+    }
+    
+    .jobOpeningStyles{
+    margin:15px 10px 10px 10px;padding:5px;min-width:260px;min-height:220px;
+    }
+    
+    .jobOpeningStyles[c-jobOpening_jobOpening]{
+    top:auto;
+    border-top:4px solid #071f86;
+    /* border-bottom:3px solid #ff4332; */
+    }
+    
+    .locationStyle{
+    /* font-weight:bold; */
+    margin-bottom:10px;
+    color:#071f86;
+    }
+    .positionStyle{
+    font-weight:bold;
+    font-size:20px;
+    color:#071f86;
+    cursor:pointer;
+    margin-left:20px;
+    margin-top:20px;
+    
+    }
+    .positionStyle:hover{
+    
+    color:#333333;
+    
+    
+    }
+    .technologyStyle{
+    font-size:14px;
+    margin-left:20px;
+    margin-top:10px;
+    color:#333333;
+    /* font-weight:bold; */
+    
+    }
+    .experienceStyle{
+    font-size:14px;
+    margin-left:20px;
+    margin-top:10px;
+    color:#333333;
+    /* font-weight:bold; */
+    
+    
+    }
+    @media screen and (max-width:600px) {
+    .jobOpeningStyles{
+    left:-5px;margin:10px;padding:10px;min-width:180px;min-height:180px;
+    }
+    .positionStyle{
+    font-size:16px;
+    }
+    }

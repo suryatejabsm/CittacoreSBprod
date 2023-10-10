@@ -1,0 +1,16 @@
+th,td{
+    min-height: 50px;
+  }
+  .toggle-btn{
+    cursor:pointer;
+    margin-right: 5px;
+    width:100%;
+  }
+  .row-container {
+    display: flex;
+  }
+  
+  .column {
+    flex: 1;
+    padding: 10px;
+  }

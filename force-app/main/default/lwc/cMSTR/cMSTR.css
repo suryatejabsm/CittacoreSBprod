@@ -1,0 +1,30 @@
+.card-container {
+    padding: 15px;
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(33.33% - 40px);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 20px;
+    width: 250px;
+    box-shadow: 0 4px 6px rgba(236, 4, 4, 0.2);
+    border-top: 5px solid red;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .card p {
+    margin-bottom: 15px;
+  }
+  
+  .card:hover {
+    background-color: #f7bd9c;
+  }

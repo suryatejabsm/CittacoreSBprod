@@ -1,0 +1,44 @@
+<template>
+
+	<div class="container">
+		<div style="position:absolute;top:100px;text-align:center;margin-left:-55%;">
+			<c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+		</div>
+
+		<!-- <place a button on the top right corner> -->
+		<lightning-button class="myButton" label="Resignation" variant="brand" onclick={handleLogin}
+			style="margin:10px;">
+		</lightning-button>
+	</div>
+	<div class="popup-overlay" if:true={isPopupOpen} style="z-index:999999999999999999999999999999;">
+		<div class="popup-container">
+			<div class="popup-header">
+				<lightning-button-icon icon-name="utility:close" variant="bare" alternative-text="Close"
+					onclick={handleClose}></lightning-button-icon>
+			</div>
+			<template if:true={showResignationPage}>
+
+				<lightning-card title="Resignation Form" style="margin-top:0px;">
+							<div class="slds-p-around_medium">
+								
+								<lightning-input label="Email ID" type="text" data-id="emailid"></lightning-input>
+								<lightning-textarea name="ResignationReason" label="Reason for Resignation" ></lightning-textarea>
+					 <lightning-input type="date" label="Date of Resignation" value={resignationDate} disabled></lightning-input>
+      <lightning-input type="date" label="Date of Relieving" value={relievingDate} disabled></lightning-input>
+								<br/>
+								<lightning-button class="myButton" label="Submit" variant="brand" onclick={Resign}
+			style="margin:10px;">
+		</lightning-button>
+		</div>
+								<br/><br/>
+								<div class="slds-m-top_medium">
+									<p class="slds-text-color_error">{errorMessage}</p>
+								</div>
+					
+				</lightning-card>
+				
+
+			</template>
+		</div>
+	</div>
+</template>

@@ -1,0 +1,81 @@
+.dummy{
+	color : blue;
+}
+
+.container {
+  height: 350px;
+  overflow-y: scroll;
+}
+lightning-button.myButton {
+	--sds-c-button-brand-color-background: #333333;
+    --sds-c-button-text-color: #ffffff;
+	
+}
+lightning-button.myButton:hover {
+	--sds-c-button-brand-color-background: #333333;
+    --sds-c-button-text-color: #ffffff;
+	
+}
+.iconClass{
+  width:40px;height:40px;background-color:red;color:red;
+}
+.iconClass:hover{
+  width:32px;height:32px;background-color:#ff4332;
+}
+:host .circle {
+    --slds-c-button-radius-border: 80%;
+}
+.titlebold{
+  font-weight: bold;
+  font-size: medium;
+}
+.sldsbox1{
+  border:1.5px solid #d3d3d3;
+  border-radius: 4px;
+  padding:4px;
+  margin:1px;
+}
+.file-name {
+  margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-title {
+  text-align: left;
+  margin-top: 2px;
+}
+.previewBtn{
+  margin-left:165px;
+  right:0;
+  margin-right: 0;
+  
+}
+.uploadtable{
+margin-top:-30px;
+margin-bottom:5px;
+}
+.scrollable-container {
+  width: 28vw;
+  max-height: 67vh;
+  overflow-y: scroll;
+  margin-top: 10px;
+  margin-left:-6px;
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as desired */
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Set the background color of the track */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background: #888; /* Set the color of the scrollbar thumb */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Set the color of the scrollbar thumb on hover */
+}

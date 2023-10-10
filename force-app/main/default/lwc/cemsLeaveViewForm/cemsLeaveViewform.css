@@ -1,0 +1,8 @@
+.slds-scope .slds-scrollable_x, .slds-scope .slds-scrollable--x{
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    border-top: 1px solid #d8dde6 !important;
+}
+.custom-label {
+    text-align: justify;
+}

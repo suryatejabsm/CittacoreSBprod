@@ -1,0 +1,181 @@
+/* CSS styles for CEMSSchedulerTable component */
+/*
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+
+.container {
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.button-icon {
+  background-color: red;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.button-icon:hover {
+  background-color: #b30000;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.table-header {
+  background-color: #8b4513;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.table-row {
+  background-color: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #8b0000;
+  cursor: pointer;
+}
+*/
+/* Additional styles for dropdown and input fields */
+/*
+.slds-combobox {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  width: 200px;
+}
+
+.slds-input {
+  width: 100%;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.slds-button {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: red;
+  color: #fff;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.slds-button:hover {
+  background-color: #b30000;
+}
+
+ */
+ /*
+ .custom-datatable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.custom-datatable tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.custom-datatable thead th {
+  background-color: #f0f0f0;
+  color: #333333;
+  font-weight: bold;
+  text-align: left;
+  padding: 12px;
+}
+
+.custom-datatable td {
+  padding: 12px;
+}*/
+
+.datatable-container {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-top: 1px solid #d8dde6 !important;
+  text-align:center;
+  border: 1px solid #d8dde6;
+  overflow-x: hidden;
+}
+.datatable-container td,
+.datatable-container th {
+padding: 10px; /* Adjust the padding value as per your preference */
+}
+.card {
+  min-width:80vw;
+  margin: 0px 0px 0px 0px; /* Adjust the margin as needed */
+  padding: 4px;
+  border: 1.5px solid #d3d3d3;
+  border-radius: 4px;
+  background-color: #fff;
+  /* display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+}
+.custom-table td,.custom-table th {
+  border: 1px solid #d8dde6;
+  min-width:110px;
+  max-width:180px;
+  text-align:center;
+  padding:4px;
+  height:45px;
+}
+
+.custom-search-input {
+  width: 200px; /* Set the desired width here */
+}

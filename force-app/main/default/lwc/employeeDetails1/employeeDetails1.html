@@ -1,0 +1,148 @@
+<!-- employeeDetails.html -->
+<template>
+      <template if:true={isLoading}>
+    <!-- Add a loading spinner or placeholder here -->
+    <p>Loading...</p>
+  </template>
+    <div class="container">
+        <div style="position:absolute;top:100px;text-align:center;margin-left:15%;">
+            <c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+        </div>
+        <div class="section-60">
+            <!-- Content for the 60% section goes here -->
+              <template if:false={isLoading}>
+
+            <template if:true={employee}>
+                <div class="slds-card awardsStyles">
+                    <h1 class="form-title1">Profile</h1>
+                    <div class="slds-grid slds-wrap slds-m-around_medium">
+                        <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>Name:</b><br/> {employee.Name}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>Work Email:</b><br/> {employee.CEMS_Work_Email__c}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>Work Location:</b><br/> {employee.CEMS_Work_Location__c}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>Phone:</b><br/> {employee.CEMS_Contact_Number__c}</p>
+                        </div>
+                         <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>HR Manager:</b><br/> {employee.hrName}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <p class="employee-label"><b>Current Position:</b><br/> {employee.cpName}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template if:false={employee}>
+                <p>No employee data found.</p>
+            </template>
+              </template>
+
+            <div class="slds-card awardsStyles" style="margin-top:10px">
+
+                <!-- Popup Modal -->
+                <template if:true={showPopup} class="template-popup">
+                    <div class="popup-overlay">
+                        <div class="popup-content">
+                            <div class="container">
+                                <h2 class="form-title1" style="margin-top:-25px">Edit Personal Details</h2>
+                                <lightning-button-icon icon-name="utility:close"
+                                    alternative-text="Connected" title="Connected" onclick={closePopup}
+                                    style="width:10px; float: right;margin-top:-25px;">
+                                </lightning-button-icon>
+                            </div>
+                            <div class="slds-p-around_medium">
+                                <lightning-record-edit-form object-api-name="CEMS_Personnel__c"
+                                    record-id={employee.id}  onsuccess={handleSuccess}>
+                                    <lightning-input-field field-name="Name"
+                                        value={employee.Name}></lightning-input-field>
+                                    <lightning-input-field field-name="CEMS_Contact_Number__c"
+                                        value={employee.CEMS_Contact_Number__c}></lightning-input-field>
+                                    <lightning-input-field field-name="CEMS_Work_Email__c"
+                                        value={employee.CEMS_Work_Email__c}></lightning-input-field>
+                                    <lightning-input-field field-name="CEMSAddress__Street__s"
+                                        value={employee.CEMSAddress__Street__s}></lightning-input-field>
+                                    <div class="slds-grid slds-wrap slds-m-around_medium">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input-field field-name="CEMSAddress__CountryCode__s"
+                                                value={employee.CEMSAddress__CountryCode__s}
+                                                style="width: 190px; margin-right: 5px;"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input-field field-name="CEMSAddress__City__s"
+                                                value={employee.CEMSAddress__City__s}
+                                                style="width: 190px; margin-left: 5px;"></lightning-input-field>
+                                        </div>
+                                    </div>
+                                    <div class="slds-grid slds-wrap slds-m-around_medium">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input-field field-name="CEMSAddress__StateCode__c"
+                                                value={employee.CEMSAddress__StateCode__c}
+                                                style="width: 190px; margin-right: 5px;"></lightning-input-field>
+                                        </div>
+                                        <div class="slds-m-around_medium">
+                                            <lightning-button variant="brand" type="button" label="Update" name="update" class="side" onclick={handleUpdate}></lightning-button>
+
+                                        </div>
+                                    </div>
+                                </lightning-record-edit-form>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+                <div class="container">
+                    <div class="slds-clearfix">
+                        <h1 class="form-title slds-float_left">Personal Information</h1>
+                    </div>
+
+                     <!-- <div class="slds-clearfix">
+                        <lightning-button-icon icon-name="utility:edit_form" alternative-text="Settings"
+                            title="Settings" onclick={openPopup} class="form slds-float_right"></lightning-button-icon>
+                    </div>  -->
+
+
+                </div>
+
+                <template for:each={emp} for:item="employee2">
+                    <div key={employee2.Id}>
+                        <div class="slds-grid slds-wrap slds-m-around_medium">
+                            <div class="slds-col slds-size_1-of-3">
+                                <p class="employee-label"><b>Address:</b>
+                                    <br>{employee2.CEMSAddress__Street__s}<br>{employee2.CEMSAddress__City__s},{employee2.CEMSAddress__StateCode__s}
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="slds-grid slds-wrap slds-m-around_medium">
+                            <div class="slds-col slds-size_1-of-3">
+                                <p class="employee-label"><b>Phone:</b> <br>{employee2.CEMS_Contact_Number__c}</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3">
+                                <p class="employee-label"><b>Email:</b> <br>{employee2.CEMS_Work_Email__c}</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3">
+                                <p class="employee-label"><b>Date of Birth:</b> <br>{employee2.CEMS_Date_of_Birth__c}
+                                </p>
+                            </div>
+                        </div>
+
+                        <template if:false={emp}>
+                            <p>No employee details found.</p>
+                        </template>
+                    </div>
+                </template>
+            </div>
+        </div>
+        <div class="section-40 slds-card awardsStyles">
+            <!-- Content for the 40% section goes here -->
+            <c-upload-files email={email}></c-upload-files>
+
+        </div>
+    </div>
+
+</template>

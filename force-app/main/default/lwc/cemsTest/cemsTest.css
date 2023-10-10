@@ -1,0 +1,91 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Adjust the maximum width as needed */
+}
+
+.card {
+  width: calc(25% - 6px); /* Adjust the width and margin as needed */
+  height: 122px; /* Adjust the height as needed */
+  margin: 0px 0px 6px 0px; /* Adjust the margin as needed */
+  padding: 4px;
+  border: 1px solid #d3d3d3;
+  border-radius: 2px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-top: 5px solid #3865B3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card p {
+  margin: 1px 0;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000000;
+}
+
+.pstyle {
+  font-weight: bold;
+  font-size: medium;
+}
+.slds-form-element__label{
+  font-size: medium;
+  margin-top:-8px;
+  color:#000000;
+}
+/*pop up style*/
+.nameStyle,.LocationStyle,.techtyle,.expStyle,.dueStyle,.RoleStyle {
+  margin-bottom: 8px;
+  list-style-type: disc;
+  padding-left: 20px;
+  text-align:left;
+  }
+
+   .custom-label {
+        text-align: left;
+    }
+/* Add media queries for responsiveness */
+
+/* For screens up to 600px */
+@media (max-width: 600px) {
+  .card {
+    width: calc(100% - 6px);
+  }
+     .slds-form-element__label{
+  font-size: medium;
+  margin-top:8px;
+  color:#000000;
+}
+}
+
+/* For screens between 601px and 900px */
+@media (min-width: 601px) and (max-width: 900px) {
+  .card {
+    width: calc(33.33% - 6px);
+  }
+       .slds-form-element__label{
+  font-size: medium;
+  margin-top:8px;
+  color:#000000;
+}
+}
+
+/* For screens larger than 901px */
+@media (min-width: 901px) {
+  .card {
+    width: calc(25% - 6px);
+  }
+
+}

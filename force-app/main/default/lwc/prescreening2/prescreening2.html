@@ -1,0 +1,19 @@
+<template>
+    <lightning-card>
+        <div class="container">
+            <h2 class="heading">Pre-Screening</h2>
+            <div class="fields-container">
+                <lightning-input label="Name" value={nameField} disabled></lightning-input>
+                <lightning-input label="Position" value={positionField} disabled></lightning-input>
+                <lightning-input label="Email" value={cemsEmailField} disabled></lightning-input>
+                <lightning-input label="Job Application" value={jobApplication} disabled></lightning-input>
+               <!-- <lightning-input label="Email Notifiaction" value={inputValue} onchange={handleInputChange} ></lightning-input>
+               -->
+            </div>
+        </div>
+        <div class="button-container">
+         <!--   <lightning-button label="Update" onclick={handleUpdate} variant="brand"></lightning-button>-->
+            <lightning-button label="Submit" onclick={handleSubmit} variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

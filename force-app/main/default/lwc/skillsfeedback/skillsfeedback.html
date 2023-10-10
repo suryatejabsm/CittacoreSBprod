@@ -1,0 +1,73 @@
+<template>
+    <template if:true={showButton}>
+        <div class="slds-text-align_center slds-m-top_medium slds-theme_shade slds-theme_alert-texture">
+            <lightning-button label="Open Skills Feedback" onclick={handleOpen} variant="brand" class="slds-button slds-button_brand"></lightning-button>
+        </div>
+    </template>
+
+    <template if:true={showComponent}>
+        <template if:true={skills}>
+            <div class="slds-box slds-theme_shade slds-theme_alert-texture">
+                <h2 class="slds-text-heading_medium slds-text-color_success slds-p-bottom_small slds-border_bottom">
+                    <lightning-icon icon-name="standard:feedback" size="medium" class="slds-m-right_small"></lightning-icon>
+                    Technical Skills Feedback
+                </h2>
+            </div>
+
+            <div class="container">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout">
+                    <thead>
+                        <tr>
+                            <th scope="col">Skills</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={skills} for:item="skill">
+                            <tr key={skill}>
+                                <td>{skill}</td>
+                                <td>
+                                    <div class="rating-container">
+                                        <lightning-input type="number" min="0" max="5" step="1" data-skill={skill}
+                                             onchange={handleRatingChange} class="rating-input"></lightning-input>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="comment-container">
+                                        <lightning-input type="text" max-length="100" data-skill={skill} onchange={handleCommentChange} class="comment-textarea">
+                                        </lightning-input>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+            <div class="button-container">
+                <div class="slds-text-align_left">
+                    <lightning-button label="Reset Feedback" onclick={handleReset} variant="destructive-text"></lightning-button>
+                </div>
+                <div class="slds-text-align_center">
+                    <lightning-button label="Close Feedback" onclick={handleClose}></lightning-button>
+                </div>
+                <div class="slds-text-align_right">
+                    <lightning-button label="Save Feedback" onclick={handleSave} variant="Brand Outline"></lightning-button>
+                </div>
+            </div>
+
+            <div class="scroll-container" style="margin-top: 20px;">
+                <div class="scroll-text">Please complete all ratings and comments for each skill in the form. Your cooperation is appreciated.</div>
+            </div>
+
+
+        </template>
+        <template if:false={skills}>
+            <div class="slds-card slds-p-around_medium">
+                <div class="slds-card__body">
+                    <p>No skills found.</p>
+                </div>
+            </div>
+        </template>
+    </template>
+</template>

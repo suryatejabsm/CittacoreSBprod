@@ -1,0 +1,19 @@
+<template>
+    <lightning-record-view-form record-id={recordId} object-api-name="Personnel__c">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-output-field field-name="Name"></lightning-output-field>
+                <lightning-output-field field-name="CEMS_Employee_ID__c"></lightning-output-field>
+                <lightning-output-field field-name="CEMS_Work_Email__c"></lightning-output-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-output-field field-name="CEMS_Work_Location__c"></lightning-output-field>
+                
+                <lightning-output-field field-name="CEMS_Reporting_Manager__c"></lightning-output-field>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-output-field field-name="CEMS_Address__c"></lightning-output-field>
+            </div>
+        </div>
+    </lightning-record-view-form>
+</template>

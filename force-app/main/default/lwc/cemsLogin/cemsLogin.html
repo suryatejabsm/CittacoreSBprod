@@ -1,0 +1,22 @@
+<template>
+    <!-- <lightning-button label="sample" onclick={callSalesforceREST} variant="brand"></lightning-button> -->
+    <template if:true={isLogin}>
+        
+        <!-- <lightning-card title="Login"> -->
+            <div class="slds-p-around_medium">
+                <lightning-input label="Employee ID" type="text" data-id="username"></lightning-input>
+                <lightning-input label="Email ID" type="text" data-id="emailid"></lightning-input>
+                <br/>   
+                <lightning-button label="Generate OTP" onclick={handleOtp} variant="brand"></lightning-button>
+            </div>
+        <!-- </lightning-card> -->
+    </template>
+    <template if:true={isOtpGenerated}>
+        <lightning-card>
+            <div class="slds-p-around_medium">
+                <lightning-input label="Enter OTP" type="text" data-id="otp"></lightning-input>
+                <lightning-button label="submit" onclick={handleLogin} variant="brand"></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+</template>

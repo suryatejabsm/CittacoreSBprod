@@ -1,0 +1,115 @@
+<template>
+	<div style="position:absolute;margin-left:-8%;top:100px;">
+		<c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+	</div>
+	<!-- Loader -->
+	<div if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading..." variant="brand" class="slds-is-fixed">
+		</lightning-spinner>
+	</div>
+	<!-- /Loader -->
+	<div style="display: flex;">
+		<div>
+			<!-- Upload Documents -->
+			<div class="slds-text-heading_small titlebold">Upload Documents.</div>
+
+			<div style="width: 24vw;">
+				<div class="slds-p-around_x-small">
+					<lightning-combobox label="" value={selectedValue} options={picklistOptions}
+						onchange={handlePicklistChange}></lightning-combobox>
+
+					<lightning-layout>
+						<lightning-layout-item padding="around-small" size="12" medium-device-size="12"
+							large-device-size="12">
+							<lightning-input label="" name="file-uploader" onchange={handleFileChange} type="file"
+								accept=".pdf, .png, .jpg, .jpeg, .docx" disabled={disableUploadButton}>
+							</lightning-input>
+							<p if:true={fileName}>{fileName}</p>
+						</lightning-layout-item>
+					</lightning-layout>
+				</div>
+				<!-- Uploaded Files -->
+				<div class="slds-p-around_x-small uploadtable">
+					<lightning-card title="" if:true={hasUploadedFiles}>
+						<template if:true={showDataTable}>
+							<div style="border: 1px solid #d3d3d3; border-radius: 4px;">
+								<lightning-datatable key-field="Name" data={uploadedFiles} columns={columns}
+									hide-table-header={hideTableHeader} hide-checkbox-column="true"
+									onrowaction={handleRowAction}></lightning-datatable>
+							</div>
+							<br />
+							<lightning-button class="slds-align_absolute-center" variant="brand-outline"
+								label="Upload Files" onclick={uploadFile}></lightning-button>
+						</template>
+					</lightning-card>
+				</div>
+			</div>
+		</div>
+
+		<!-- Uploaded Files List -->
+		<div>
+			<div class="slds-text-heading_small titlebold">Uploaded Files.</div>
+
+			<div class="scrollable-container">
+				<div class="slds-p-left_small">
+					<template for:each={lstAllFiles} for:item="fileIterator" key={fileIterator.Id}>
+						<div class="slds-hint-parent sldsbox1" key={fileIterator.Id}>
+							<div style="display: flex; flex-direction: column; align-items: flex-start;">
+								<div style="display: flex; align-items: center;">
+									<p class="file-name"><b>File Name:</b></p>
+									<lightning-button class="previewBtn" variant="brand-outline" label="Preview"
+										data-id={fileIterator.Id} onclick={previewHandler}></lightning-button>
+								</div>
+								<div class="file-title">{fileIterator.Title}</div>
+							</div>
+						</div>
+
+					</template>
+											      <!-- PDF Preview Modal -->
+      <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+          aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+          <!-- Show a spinner while loading the PDF -->
+          <template if:false={iframeLoaded}>
+            <div class="slds-spinner_container">
+              <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">Loading...</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+              </div>
+            </div>
+          </template>
+
+          <div class="slds-modal__container" style="min-width: 80vw; min-height: 80vh;">
+            <template if:true={filePreviewUrl}>
+              <!-- Iframe to display the PDF -->
+              <iframe src={filePreviewUrl} frameborder="0" class="file-preview-iframe"
+                style="width: 100%; height: 600px;" onload={handleIframeLoad}></iframe>
+            </template>
+
+            <div class="slds-modal__content" id="modal-content-id-1">
+              	<lightning-layout>
+										<lightning-layout-item flexibility="auto">
+											<article class="slds-card">
+												<div class="slds-card__body slds-card__body_inner" style="margin: 0">
+												</div>
+											</article>
+										</lightning-layout-item>
+									</lightning-layout>
+            </div>
+
+            <footer class="slds-modal__footer slds-grid slds-grid_align-spread">
+              <lightning-button variant="brand-outline" label="Close" onclick={closeModal} title="Cancel"
+                class="slds-var-m-left_x-small"></lightning-button>
+            </footer>
+          </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+
+					</template>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</template>

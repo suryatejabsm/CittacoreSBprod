@@ -1,0 +1,23 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .card {
+    width: 245px; /* Adjust the width as per your requirement */
+    height: 115px; /* Adjust the height as per your requirement */
+    margin: 5px 5px 5px 0px; /* Adjust the margin values to achieve equal top and bottom margins */
+    padding: 5px;
+    border-top: 5px solid #032D60;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .card:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    font-weight: bold;
+  }

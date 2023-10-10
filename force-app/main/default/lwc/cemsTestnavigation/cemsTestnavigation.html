@@ -1,0 +1,58 @@
+<template>
+	<lightning-tabset variant="vertical">
+		<lightning-tab label="HOME">
+			<c-flow-carousel isloggedin={isloggedin}></c-flow-carousel>
+		</lightning-tab>
+		<lightning-tab label="Employee Information">
+			<p class="slds-text-align_left hamburger">Employee Information</p>
+			<div style="margin-top:35px;">
+			<c-employee-details-1 email={email}></c-employee-details-1>
+			</div>
+		</lightning-tab>
+		<lightning-tab label="Project Details">
+			<p class="slds-text-align_left hamburger">Project Details</p>
+			<div style="margin-top:35px;">
+			<c-employee-project email={email}></c-employee-project>
+			</div>
+		</lightning-tab>
+		<lightning-tab label="Performance">
+			<p class="slds-text-align_left hamburger">Performance</p>
+            <div style="margin-top:30px;">
+			<c-employee-performance email={email}></c-employee-performance>
+            </div>
+		</lightning-tab>
+		<lightning-tab label="Leave Information">
+			<p class="slds-text-align_left hamburger">Leave</p>
+            <div style="margin-top:35px;">
+			<c-cems-leave-view-form email={email}></c-cems-leave-view-form>
+			<c-apply-leave></c-apply-leave>
+            </div>
+		</lightning-tab>
+		<lightning-tab label="Job Openings">
+			<p class="slds-text-align_left hamburger">External Jobs</p>
+            <div style="margin-top:30px;">
+			<!-- <c-external-jobs email={email}></c-external-jobs> -->
+			<c-cems-job-application-edit-form></c-cems-job-application-edit-form>
+            </div>
+		</lightning-tab>
+		<lightning-tab label="Awards">
+			<!-- <p class="slds-text-align_left hamburger">Awards</p> -->
+            <div style="margin-top:-15px;">
+			<c-awards-with-tabs email={email}></c-awards-with-tabs>
+            </div>
+		</lightning-tab>
+		<lightning-tab label="Interview Schedule">
+			<p class="slds-text-align_left hamburger">Interview Schedule</p>
+            <div  style="margin-top:30px;">
+			<c-cems-interview-scheduler-for-public-site email={email}></c-cems-interview-scheduler-for-public-site>
+            </div>
+		</lightning-tab>
+		<lightning-tab label="Trainings">
+			<!-- <p class="slds-text-align_left hamburger">Trainings</p> -->
+            <div style="margin-top:-10px;">
+			<c-trainings-with-tabs email={email}></c-trainings-with-tabs>
+            </div>
+		</lightning-tab>
+
+	</lightning-tabset>
+</template>

@@ -1,0 +1,21 @@
+/*
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f7f7f7;
+  }*/
+
+  .slds-tabs_default__link:focus,
+.slds-tabs_default__link:active {
+    font-weight: bold;
+}
+
+/* cemsDisplayTrainings.css */
+
+  
+  .slds-tabs_default {
+    /* Adjust the top margin for the tabs */
+    margin-top: -20px;
+  }

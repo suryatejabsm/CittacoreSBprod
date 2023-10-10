@@ -1,0 +1,40 @@
+<template>
+  <div style="margin-top:40px;min-width:83vw;">
+      <lightning-tabset variant="scoped" active-tab-value={activeTabValue}>
+        <lightning-tab  value="My Trainings" label="My Trainings">
+            <p class="slds-text-align_left hamburger">My Trainings</p>
+          <c-cems-training email={email}></c-cems-training>
+        </lightning-tab>
+        <lightning-tab value="Available Training" label="Available Training">
+            <p class="slds-text-align_left hamburger">Available Trainings</p>
+          <c-cems-display-trainings email ={email}></c-cems-display-trainings>
+        </lightning-tab>
+         </lightning-tabset>
+</div>
+    <!-- <div class="slds-grid slds-wrap" style="margin-top:35px;">
+      <div class="slds-col">
+        <div class="custom-radio-group slds-align_absolute-center">
+          <lightning-radio-group
+            options={options}
+            value={value}
+            type="button"
+            onchange={handleRadioChange}
+            class="custom-radio-group slds-align_absolute-center"
+          ></lightning-radio-group>
+        </div>
+      </div>
+  
+      <div class="slds-col slds-size_12-of-12">
+        <template if:true={salesforceLwcFieldValue}>
+            <p class="slds-text-align_left hamburger">Loggedin Employee Trainings</p>
+          <c-cems-training email={email}></c-cems-training>
+        </template>
+  
+        <template if:true={tutorialFieldValue}>
+            <p class="slds-text-align_left hamburger">All The Employees Trainings</p>
+
+          <c-cems-training-show-all-learnings></c-cems-training-show-all-learnings>
+        </template>
+      </div>
+    </div> -->
+  </template>

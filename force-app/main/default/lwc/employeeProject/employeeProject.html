@@ -1,0 +1,67 @@
+<template>
+  <div style="overflow: auto; height: 350px;">
+    <div style="border: 1px solid #d3d3d3; border-radius: 4px; max-height: 100%; overflow: auto;">
+      <table style="table-layout: fixed;">
+        <thead style="height:45px;">
+          <tr>
+            <th style="padding-left:5px;">Project Name</th>
+            <th>Employee Name</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <template for:each={employeetabs} for:item="project">
+            <tr key={project.Id} class="toggle-btn"
+              style="height:40px;margin-left:5px;border-top:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3; border-spacing: 0;">
+              <td style="padding-left:5px;">
+                <lightning-button-icon data-value={project.Id} onclick={handleToggleClick}
+                  icon-name="utility:chevronright" alternative-text="Toggle chevronright" title="Toggle chevronright"
+                  label="Show/Hide">
+
+                  </lightning-button-icon>
+                <span>{project.CEMS_Projects__r.Name}</span>
+              </td>
+                <td>{project.CEMS_Employee__r.Name}</td>
+                <td>{project.CEMS_Employee_s_Project_Start_Date__c}</td>
+                <td>{project.CEMS_Employee_s_Project_End_Date__c}</td>
+     
+            </tr>
+            <template if:true={project.isExpanded}>
+              <tr key={project.Id}>
+                <td colspan="4">
+                  <section class="slds-accordion__section slds-is-open">
+                    <div class="accordion">
+                      <div class="row-container">
+                        <div class="column">
+                          <template if:true={project.projectName}>
+                            <p><strong>Project Name:</strong> {project.CEMS_Projects__r.Name}</p>
+                          </template>
+                          <p><strong>Employee Name:</strong> {project.CEMS_Employee__r.Name}</p>
+                          <p><strong>Project Start Date:</strong> {project.CEMS_Employee_s_Project_Start_Date__c}</p>
+                          <p><strong>Project End Date:</strong> {project.CEMS_Employee_s_Project_End_Date__c}</p>
+                     
+                        </div>
+                        <div class="column">
+                          <p><strong>Project Role:</strong> {project.CEMS_Project_Role__c}</p>
+                          <p><strong>Project Resposibility:</strong> {project.CEMS_Project_Responsiblity__c}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </td>
+              </tr>
+            </template>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <template if:true={showPagination}>
+    <template if:true={totalRecords}>
+      <div class="slds-float_right slds-size_1-of-1" style="margin-top:20px;z-index:2;">
+        <c-pagination totalrecords={totalRecords} page-size={pageSize} onpagination={handlePagination}></c-pagination>
+      </div>
+    </template>
+  </template>
+</template>

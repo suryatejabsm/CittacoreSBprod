@@ -1,0 +1,30 @@
+<template>
+    <!-- <lightning-card title="How can I get selected radio button value in Lightning Web Component -- LWC" icon-name="custom:custom19" size="small"> -->
+    <div class="slds-grid slds-wrap" style="margin-top:35px;">
+      <div class="slds-col">
+        <div class="custom-radio-group slds-align_absolute-center">
+          <lightning-radio-group
+            options={options}
+            value={value}
+            type="button"
+            onchange={handleRadioChange}
+            class="custom-radio-group slds-align_absolute-center"
+          ></lightning-radio-group>
+        </div>
+      </div>
+  
+      <div class="slds-col slds-size_12-of-12">
+        <template if:true={salesforceLwcFieldValue}>
+            <p class="slds-text-align_left hamburger">Loggedin Employee Projects</p>
+          <c-employee-project email={email}></c-employee-project>
+        </template>
+  
+        <template if:true={tutorialFieldValue}>
+            <p class="slds-text-align_left hamburger">All The Employees Projects</p>
+
+          <c-employee-project></c-employee-project>
+        </template>
+      </div>
+    </div>
+    <!-- </lightning-card> -->
+  </template>

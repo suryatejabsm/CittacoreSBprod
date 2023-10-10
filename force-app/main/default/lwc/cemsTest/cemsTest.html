@@ -1,0 +1,357 @@
+<template>
+	<!-- <div class="slds-card" style="padding:10px;font-size:16px;">Job Openings</div> -->
+
+	<div class="container" style="padding-top:2px;">
+		<div style="position:absolute;top:100px;text-align:center;margin-left:14%;">
+			<c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+		</div>
+
+		<div class="slds-form slds-form_inline">
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<!-- <label class="slds-form-element__label" >Search</label> -->
+					<lightning-input data-id="searchme" type="search" onchange={handleSearch} placeholder="Search"></lightning-input>
+				</div>
+			</div>
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<label class="slds-form-element__label" >Technology</label>
+					<lightning-combobox data-id="technology" name="technology" value={selectedTechnology} class="center-align-combobox"
+						options={technologyOptions} onchange={handleTechnologyChange} placeholder="Select Technology">
+					</lightning-combobox>
+				</div>
+			</div>
+
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<label class="slds-form-element__label" >Experience</label>
+                        
+					<lightning-combobox data-id="experience" name="experience" value={selectedExp} class="center-align-combobox"
+						options={experienceOptions} onchange={handleExperience} placeholder="Select Experience">
+					</lightning-combobox>
+				</div>
+			</div>
+
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<label class="slds-form-element__label" >Location</label>
+
+					<lightning-combobox data-id="location" name="location" value={selectedLocation} class="center-align-combobox"
+						options={locationOptions} onchange={handleLocationChange}
+						placeholder="Select Location"></lightning-combobox>
+				</div>
+			</div>
+			<!-- <lightning-button  variant="outline" label="reset" onclick={handleResetFilter} alternative-text="Reset"
+					title="Delete"></lightning-button> -->
+
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<lightning-button variant="brand-outline" label="Reset" title="Reset" class="center-align-combobox"
+						onclick={handleResetFilter}></lightning-button>
+				</div>
+			</div>
+		</div>
+		<div class="card-container">
+			<div class="card-grid">
+				<template for:each={filteredJobOpenings} for:item="JobOpening">
+					<div key={JobOpening.Id} class="card" onmouseover={underlineFirstPTag}
+					onmouseout={removeUnderlineFirstPTag}>
+						<p class="pstyle" data-value={JobOpening.Id} onclick={openJobOpeningPopup}>{JobOpening.Name}</p>
+						<p>Location - {JobOpening.CEMS_Job_Location__c}</p>
+						<p>Technology - {JobOpening.CEMS_Technology__c}</p>
+						<p>Experience - {JobOpening.CEMS_Experience__c}</p>
+						<p>DueDate - {JobOpening.CEMS_Due_Date__c}</p>
+					</div>
+				</template>
+			</div>
+		</div>
+
+		<!-- Pop-up Form -->
+		<template if:true={isJobOpeningPopupOpen}>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+			<div class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container" style="z-index:99999999999999999;margin-top:40px;">
+					<div class="slds-modal__header">
+						<h2 class="slds-text-heading_medium">Job Opening Details</h2>
+					</div>
+					<div class="slds-modal__content slds-p-around_medium">
+						<template if:true={selectedJobOpening}>
+							<p class="nameStyle"><b>Job Name :</b> {selectedJobOpening.Name}</p>
+							<p class="LocationStyle"><b>Location :</b> {selectedJobOpening.CEMS_Job_Location__c}</p>
+							<p class="techtyle"><b>Technology :</b> {selectedJobOpening.CEMS_Technology__c}</p>
+							<p class="expStyle"><b>Experience :</b> {selectedJobOpening.CEMS_Experience__c}</p>
+							<p class="dueStyle"><b>Last Date :</b> {selectedJobOpening.CEMS_Due_Date__c}</p>
+							<p class="RoleStyle">
+								<b>Roles and Responsibilities :
+								</b>{selectedJobOpening.CEMS_Roles_and_Responsibilities__c}
+							</p>
+						</template>
+						<!-- <br></br> -->
+					</div>
+					<div class="slds-modal__footer">
+						<lightning-button class="myButton" label="Apply Now" variant="brand" onclick={applyNow}
+							style="margin:10px;">
+						</lightning-button>
+						<lightning-button variant="neutral" label="Close" onclick={closeJobOpeningPopup}>
+						</lightning-button>
+					</div>
+				</div>
+			</div>
+		</template>
+		<template if:true={openLoginOrRegisterPage}>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+			<div class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container" style="z-index:99999999999999999;margin-top:40px;">
+					<template if:true={applicantLoginPage}>
+						<div class="slds-modal__header">
+							<h2 class="slds-text-heading_medium">Login Page</h2>
+						</div>
+					</template>
+					<template if:true={showRegistrationPage}>
+						<div class="slds-modal__header">
+							<h2 class="slds-text-heading_medium">Registration Page</h2>
+						</div>
+					</template>
+					<div class="slds-modal__content slds-p-around_xx-small">
+						<template if:true={applicantLoginPage}>
+							<lightning-card title="Login" style="margin-top:0px;">
+								<div class="slds-m-around_xx-small">
+									<lightning-input label="Name" data-id="name" required class="custom-label">
+									</lightning-input>
+									<br />
+									<lightning-input label="Email" data-id="applicantemail" required class="custom-label"			>
+									</lightning-input>
+									<br />
+								</div>
+							</lightning-card>
+							<p style="text-align:right; margin-right:10px;">
+								Don't have an account?</br>
+								<a href="#" onclick={showRegistrationForm}>Register</a>
+							</p>
+						</template>
+						<template if:true={applicantValidateOtp}>
+							<lightning-card title="Login" style="margin-top:0px;">
+								<div class="slds-m-around_xx-small">
+									<lightning-input label="OTP" data-id="otp" required>
+									</lightning-input>
+									<br />
+								</div>
+							</lightning-card>
+						</template>
+						<template if:true={showRegistrationPage}>
+							<lightning-card title="Registration Form" style="margin-top:0px;">
+								<!-- registration form is displayed in different cards and to display each card if true condition is used -->
+								<!-- card-1 -->
+								<template if:true={showPersonalDetails}>
+									<!-- progress indicator on the top of the form  -->
+									<lightning-progress-indicator current-step="Personal Details" type="base"
+										variant="base">
+										<lightning-progress-step label="Personal Details" value="1">
+										</lightning-progress-step>
+										<lightning-progress-step label="Education Details" value="2">
+										</lightning-progress-step>
+										<lightning-progress-step label="Experience Details" value="3">
+										</lightning-progress-step>
+										<lightning-progress-step label="Kyc Details" value="4">
+										</lightning-progress-step>
+									</lightning-progress-indicator>
+									<lightning-card title="Personal Details" style="margin-top:0px;">
+										<div class="slds-card__body registration-scroll-container">
+											<div class="slds-m-around_medium ">
+												<lightning-input label="First Name" value={firstName}
+													onchange={handleFirstNameChange} required class="custom-label">
+												</lightning-input>
+												<lightning-input label="Last Name" value={lastName}
+													onchange={handleLastNameChange} required class="custom-label">
+												</lightning-input>
+												<lightning-input label="Email" value={email}
+													onchange={handleRegistrationEmailChange} required class="custom-label">
+												</lightning-input>
+												<lightning-input label="phone" value={phone}
+													onchange={handleRegistrationPhoneChange} required class="custom-label">
+												</lightning-input>
+												<lightning-input label="City" value={city} onchange={handleCityChange}
+													required class="custom-label">
+												</lightning-input>
+												<lightning-input label="Street" value={street}
+													onchange={handleStreetChange} required class="custom-label"></lightning-input>
+												<lightning-input label="Country" value={country}
+													onchange={handleCountryChange} required class="custom-label"></lightning-input>
+												<lightning-input label="Postal Code" value={postalCode}
+													onchange={handlePostalCodeChange} required class="custom-label"></lightning-input>
+												</br>
+												<div class="slds-grid slds-gutters">
+													<div class="slds-col">
+														<div class="slds-align_absolute-center">
+															<button class="slds-button slds-button_brand"
+																onclick={handleNext}>Next</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</lightning-card>
+								</template>
+								<!-- card-2 -->
+								<template if:true={showEducationDetails}>
+									<lightning-progress-indicator current-step="Education Details" type="base"
+										class="slds-m-bottom_medium">
+										<lightning-progress-step label="Personal Details" value="Personal Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Education Details" value="Education Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Experience Details" value="Experience Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Kyc Details" value="Kyc Details">
+										</lightning-progress-step>
+									</lightning-progress-indicator>
+									<lightning-card title="Education Details" style="margin-top:0px;">
+										<div class="slds-m-around_medium">
+											<lightning-input label="Your Highest Degree" value={highestDegree}
+												onchange={handleHighestDegreeChange} required class="custom-label">
+											</lightning-input>
+											<lightning-input label="Board of qualification" value={qualification}
+												onchange={handleQualificationChange} required class="custom-label">
+											</lightning-input>
+											<lightning-input label="CGPA/Percentage" value={cgpa}
+												onchange={handleCGPAChange} required class="custom-label">
+											</lightning-input>
+											<br />
+											<div class="slds-grid slds-gutters">
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handlePrevious}>Previous</button>
+													</div>
+												</div>
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handleNext}>Next</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</lightning-card>
+								</template>
+								<!-- card-3 -->
+								<template if:true={showExperienceDetails}>
+									<lightning-progress-indicator current-step="Experience Details" type="base"
+										class="slds-m-bottom_medium">
+										<lightning-progress-step label="Personal Details" value="Personal Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Education Details" value="Education Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Experience Details" value="Experience Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Kyc Details" value="Kyc Details">
+										</lightning-progress-step>
+									</lightning-progress-indicator>
+									<lightning-card title="Experience Details" style="margin-top:0px;">
+										<div class="slds-m-around_medium">
+											<lightning-input label="Years Of Experience" value={experience}
+												onchange={handleExperienceChange} class="custom-label">
+											</lightning-input>
+											<lightning-input label="Previous Company" value={previousCompany}
+												onchange={handleCompanyChange} class="custom-label">
+											</lightning-input>
+											<lightning-input label="Role" value={role} onchange={handleRoleChange} class="custom-label">
+											</lightning-input >
+											<br />
+											<div class="slds-grid slds-gutters">
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handlePrevious}>Previous</button>
+													</div>
+												</div>
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handleNext}>Next</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</lightning-card>
+								</template>
+								<!-- card-4 -->
+								<template if:true={showKycDetails}>
+									<lightning-progress-indicator current-step="Kyc Details" type="base"
+										class="slds-m-bottom_medium">
+										<lightning-progress-step label="Personal Details" value="Personal Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Education Details" value="Education Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Experience Details" value="Experience Details">
+										</lightning-progress-step>
+										<lightning-progress-step label="Kyc Details" value="Kyc Details">
+										</lightning-progress-step>
+									</lightning-progress-indicator>
+									<br/>
+									<lightning-card title="Kyc Details" style="margin-top:0px;">
+										<div class="slds-m-around_medium">
+											<lightning-input type="text" label="PAN Card Number" value={panCard}
+												onchange={handlePanCardChange} onkeydown={convertToUpperCase} required class="custom-label">
+											</lightning-input>
+											<template if:true={isPanCardError}>
+												<p class="error-message">Please enter a valid PAN card number</p>
+											</template>
+											<br></br>
+											<label><strong>Upload PanCard:</strong></label>
+											<input type="file" accept=".pdf" onchange={handleFileChange1} />
+											<br></br>
+											<label><strong>Upload Resume:</strong></label>
+											<input type="file" accept=".pdf" onchange={handleFileChange} />
+
+											<br></br>
+											<div class="slds-grid slds-gutters">
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handlePrevious}>Previous</button>
+													</div>
+												</div>
+												<div class="slds-col">
+													<div class="slds-align_absolute-center">
+														<button class="slds-button slds-button_brand"
+															onclick={handleRegistration}>Register</button>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</lightning-card>
+								</template>
+							</lightning-card>
+						</template>
+					</div>
+					<div class="slds-modal__footer">
+						<template if:true={applicantLoginPage}>
+							<lightning-button class="myButton" label="Generate OTP" variant="brand"
+								onclick={applicantLoginGenerateOtp} style="margin:10px;">
+							</lightning-button>
+						</template>
+						<template if:true={applicantValidateOtp}>
+							<lightning-button class="myButton" label="Validate OTP" variant="brand"
+								onclick={applicantLoginValidateOtp} style="margin:10px;">
+							</lightning-button>
+						</template>
+						<lightning-button variant="neutral" label="Close" onclick={closeApplicantLoginPage}>
+						</lightning-button>
+					</div>
+				</div>
+			</div>
+
+	</div>
+</template>
+<template if:true={showPagination}>
+<template if:true={totalRecords}>
+	<div class="slds-float_right slds-size_1-of-1">
+		<c-pagination totalrecords={totalRecords} page-size={pageSize} onpagination={handlePagination}></c-pagination>
+	</div>
+</template>
+</template>
+</div>
+
+</template>

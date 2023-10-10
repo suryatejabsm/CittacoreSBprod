@@ -1,0 +1,38 @@
+.llitem{
+  width:18vw;
+  height:100vh;
+  margin-top: -25px;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+
+}
+/* .tabContent .postImage{display: inline-block; float:right; }
+.tabContent .postImage img{border:1px #ddd solid;}
+.readMore{font-size:14px; font-weight:bold; display:inline-block; padding:0 0 0 10px;}
+.readMore a{color:#ff0000; text-decoration:none;}
+.readMore a:hover{color:#04a5ca; text-decoration:underline;}
+.titleTag{font-size:18px;}
+.titleTag a{color:#003333; font-weight:bold;}
+.imgRt{width:52%; float:left;}  */
+/* Add this CSS to your component's CSS file or use inline styles */
+
+/* .tabContent1 {
+height: 100vh;
+overflow: auto;
+} */
+
+
+.tabContent1 {
+position:relative;
+width:82vw;
+height:500px;
+overflow: auto;
+bottom:0;
+padding:auto;
+}
+.hamburger{
+color:#000000; text-transform: capitalize;font-size:medium;
+}
+.borderbtm{
+border-bottom: 1px solid #d3d3d3;
+color:#000000;
+}

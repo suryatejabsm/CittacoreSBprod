@@ -1,0 +1,53 @@
+.hamburger{
+    color:#000000;
+    background-color:#f1f1f1;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+    border-radius: 2px;;
+    padding: 6px;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    margin-bottom: 3px;
+    top:85px;
+    width:82vw;
+    font-size:medium;
+    text-transform: capitalize;
+    font-weight: bold;
+    position:fixed;
+    left:210px;
+  }
+  p{
+    margin-top:5px;
+    margin-bottom:5px;
+    font-size: medium;
+    font-weight: bold;
+  }
+:host(.tab-active) {
+  background-color: rgb(55, 50, 117) !important;
+
+}
+:host(.slds-scope.slds-vertical-tabs__nav-item) {
+  background-color: rgb(165, 32, 125) !important;
+}
+.slds-scope.slds-vertical-tabs__nav-item{
+  background-color: aqua;
+}
+
+.my-tabset .slds-tabs_default__item.slds-has-focus {
+  background-color: #ff0000; /* Replace with your desired color for the active tab */
+}
+
+.my-tabset .slds-tabs_default__item.slds-not-selected {
+  background-color: #00ff00; /* Replace with your desired color for the inactive tabs */
+}
+
+.my-tabset .slds-scope.slds-vertical-tabs__nav-item {
+  background-color: #cd64a1; /* Replace with your desired color for the active tab */
+}
+
+:host ::slotted(.slds-scope .slds-vertical-tabs__nav-item) {
+  background-color: #ff0000; /* Replace with your desired color */
+}
+
+:host .slds-vertical-tabs__nav-item {
+  background-color: #0a9f08; /* Replace with your desired color */
+}

@@ -1,0 +1,48 @@
+<template>
+    <lightning-card title="Object Identification in Image" icon-name="action:record">
+        <div class="slds-m-around_large">
+            <div if:false={isLoaded} class="slds-is-relative">
+                <div class="slds-spinner_container slds-align_absolute-center">
+                    <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                      <span class="slds-assistive-text">Loading</span>
+                      <div class="slds-spinner__dot-a"></div>
+                      <div class="slds-spinner__dot-b"></div>
+                    </div>
+                  </div>
+            </div>
+            <lightning-layout vertical-align="slds-grid_vertical-align-start">
+                <lightning-layout-item size="6" flexibility="auto" padding="around-small">
+                    <lightning-combobox
+                    name="progress"
+                    label="Cases"
+                    value={selectedCase}
+                    options={selectOptions}
+                    onchange={handleCaseChange}></lightning-combobox>
+
+                </lightning-layout-item>
+                <lightning-layout-item size="8" flexibility="auto">
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-layout vertical-align="center" horizontal-align="spread">
+                    <lightning-layout-item size="6" flexibility="auto" padding="around-small">
+                        <iframe src={imageUrl} width="500px" height="400px"></iframe>           
+                    </lightning-layout-item>
+                    <lightning-layout-item size="1">
+                            <div class="slds-p-around_medium lgc-bg-inverse">
+                                <lightning-button-icon icon-name="standard:macros" size="medium" onclick={getObjectDetail} ></lightning-button-icon>
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="5"> 
+                        <div style="height: 300px;">
+                            <lightning-datatable
+                                    key-field="id"
+                                    data={data}
+                                    columns={columns}>
+                            </lightning-datatable>
+                        </div> 
+                    </lightning-layout-item>
+            </lightning-layout>
+        </div>
+           
+    </lightning-card>
+</template>

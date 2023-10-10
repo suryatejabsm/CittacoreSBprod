@@ -1,0 +1,91 @@
+<template>
+    <div style="overflow: auto; height: 350px;">
+        <div style="border: 1px solid #d3d3d3; border-radius: 4px; max-height: 100%; overflow: auto;">
+            <table style="table-layout: fixed;">
+                <thead style="height:45px;">
+                    <tr>
+                        <th style="padding-left:5px;">Performance Year</th>
+                        <th>Current Discussion Date</th>
+                        <th>OverRall Rating</th>
+                        <th>Bonus</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={paginationperfomance} for:item="performance">
+                        <tr key={performance.Id} class="toggle-btn"
+                            style="height:40px;margin-left:5px;border-top:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3; border-spacing: 0;">
+                            <td style="padding-left:5px;">
+                                <lightning-button-icon data-value={performance.Id} onclick={handleToggleClick}
+                                    icon-name="utility:chevronright" alternative-text="Toggle chevronright"
+                                    title="Toggle chevronright" label="Show/Hide">
+                                </lightning-button-icon>
+                                <span>{performance.Name}</span>
+                            </td>
+                            <!-- <td>{performance.CEMS_Employee__r.Name}</td> -->
+                            <td>{performance.CEMS_Current_Discussion_Date__c}</td>
+                            <td>{performance.CEMS_Overall_Rating__c}</td>
+                            <td>{performance.CEMS_Bonus__c}</td>
+                            <td>{performance.CEMS_Hike__c}</td>
+                        </tr>
+                        <template if:true={performance.isExpanded}>
+                            <tr key={performance.Id}>
+                                <td colspan="4">
+                                    <section class="slds-accordion__section slds-is-open">
+                                        <div class="accordion">
+                                            <div class="row-container">
+                                                <div class="column">
+                                                    <template if:true={performance.Name}>
+                                                        <p><strong>Name:</strong> {performance.CEMS_Employee__r.Name}</p>
+                                                    </template>
+                                                    <!-- <p><strong>Employee Name:</strong>-->
+                                                        <!-- {performance.CEMS_Employee__r.Name}</p> -->
+                                                    <p><strong>Performance Outcome:</strong>
+                                                        {performance.CEMS_Performance_Outcome__c}</p>
+                                                    <!-- <p><strong>weakness:</strong> {performance.CEMS_Weakness__c}</p>
+                                                    <p><strong>Threat:</strong>
+                                                        {performance.CEMS_Threats__c}</p> -->
+
+                                                </div>
+
+                                                <!-- <div class="column">
+                                                    <p><strong>Rating 1:</strong>
+                                                        {performance.CEMS_Rating_Value_1__c}</p>
+                                                    <p><strong>Rating 2:</strong>
+                                                        {performance.CEMS_Rating_Value_2__c}</p>
+                                                    <p><strong>Rating 3:</strong>
+                                                        {performance.CEMS_Rating_Value_3__c}</p>
+                                                    <p><strong>Rating 4:</strong>
+                                                        {performance.CEMS_Rating_Value_4__c}</p>
+                                                    <p><strong>Rating 5:</strong>
+                                                        {performance.CEMS_Promoted_Designation__c}</p>
+
+                                                </div> -->
+                                                <div class="column">
+                                                    <p><strong>Career Development Focus Areas:</strong>
+                                                        {performance.CEMS_Career_Development_Focus_Areas__c}</p>
+                                                    <p><strong>Hike:</strong>
+                                                        {performance.CEMS_Hike__c}</p>
+                                                    <p><strong>Overall Rating:</strong>
+                                                        {performance.CEMS_Overall_Rating__c}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </td>
+                            </tr>
+                        </template>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <template if:true={showPagination}>
+        <template if:true={totalRecords}>
+            <div class="slds-float_right slds-size_1-of-1" style="margin-top:20px;z-index:2;">
+                <c-pagination totalrecords={totalRecords} page-size={pageSize}
+                    onpagination={handlePagination}></c-pagination>
+            </div>
+        </template>
+    </template>
+    </template>

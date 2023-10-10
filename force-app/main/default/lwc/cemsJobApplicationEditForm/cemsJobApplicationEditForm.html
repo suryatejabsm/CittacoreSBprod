@@ -1,0 +1,18 @@
+<!-- <template>
+	<lightning-quick-action-panel header="New JobApplication">
+		<lightning-record-form object-api-name="CEMS_Job_Application__c" layout-type="Full" columns="2"
+			onsubmit={handleSubmit} onsuccess={handleSuccess} record-type-id={jobApplicationRecordTypeId}>
+		</lightning-record-form>
+	</lightning-quick-action-panel>
+</template> -->
+<template>
+    <lightning-quick-action-panel header="New JobApplication">
+        <lightning-record-form
+            object-api-name="CEMS_Job_Application__c"
+            layout-type="Full"
+            columns="2"
+            record-type-id={jobApplicationRecordTypeId}
+            onsubmit={handleSubmit}>
+        </lightning-record-form>
+    </lightning-quick-action-panel>
+</template>

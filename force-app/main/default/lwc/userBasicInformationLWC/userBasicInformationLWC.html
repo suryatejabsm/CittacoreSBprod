@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="User Basic Information">
+        <div if:true={isDataAvailable}>
+            <p><strong>Name:</strong> {userInformation.Name}</p>
+            <p><strong>Email:</strong> {userInformation.CEMS_Work_Email__c}</p>
+            <!-- Add other fields here as needed -->
+        </div>
+        <template if:false={isDataAvailable}>
+            <p>Error: {errorMessage}</p>
+        </template>
+        <div slot="actions">
+            <lightning-button label="Get User Information" onclick={handleButtonClick} disabled={isDataAvailable}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

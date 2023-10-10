@@ -1,0 +1,129 @@
+<template>
+	
+	<div style="margin:0;padding:0;right:0;left:0;position:fixed;">
+  <lightning-layout>
+	  	  <lightning-layout-item class="llitem">
+		  <lightning-vertical-navigation selected-item={selectedItem} onselect={changeHandleAction}
+			  class="navigation">
+			  <lightning-vertical-navigation-section class="sidebarnav">
+			
+				  <lightning-vertical-navigation-item label="Home" name="Home" class="borderbtm"  style="margin-top:-10px">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Job Openings" name="jobopenings" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				<template if:true={isloggedafter}>
+				  <lightning-vertical-navigation-item label="Personal Details" name="PersonalDetails" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Projects" name="MyProjects" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Performance" name="MyPerformance" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Leaves" name="Leaves" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				 
+				  <lightning-vertical-navigation-item label="Awards" name="Awards" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Interview Schedule" name="InterviewSchedule" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  <lightning-vertical-navigation-item label="Trainings" name="Trainings" class="borderbtm">
+				  </lightning-vertical-navigation-item>
+				  </template>
+				  <!-- <lightning-vertical-navigation-item label="Resignation" name="Resignation" class="borderbtm">
+				  </lightning-vertical-navigation-item> -->
+				  <!-- <lightning-vertical-navigation-item label="Salesforce LWC" name="salesforceLwc"></lightning-vertical-navigation-item> -->
+			  </lightning-vertical-navigation-section>
+		  </lightning-vertical-navigation>
+	  </lightning-layout-item>
+		  <lightning-layout-item>
+
+			  <div class="slds-p-around_medium">
+
+				  <!-- <h2 class="slds-p-around_medium" style="background:#eee; margin-bottom:5px;position:fixed;">
+					  <b class="hamburger"><span class="hamburger">{currentContent}</span></b>
+				  </h2> -->
+				
+			  <template if:true={homeValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					  <c-flow-carousel isloggedin ={isloggedin}></c-flow-carousel>
+				  </div>
+			  </template>
+			
+			  <template if:true={personalDetailsValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					  <c-employee-details-1 email={email}></c-employee-details-1>
+				  </div>
+			  </template>
+
+			  <template if:true={myProjectsValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					  <!-- <c-projects-with-tabs email={email}></c-projects-with-tabs> -->
+					  <c-employee-project email={email}></c-employee-project>
+				  </div>
+			  </template>
+
+			  <template if:true={myPerformanceValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-heading_medium slds-text-align_left hamburger slds-box">{currentContent}</p>
+					  <!-- <c-performance-with-tabs email={email}></c-performance-with-tabs> -->
+					  <c-employee-performance email={email}></c-employee-performance>
+				  </div>
+			  </template>
+
+			  <template if:true={leavesValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					 <c-cems-leave-view-form email={email}></c-cems-leave-view-form>
+					  <c-apply-leave></c-apply-leave>
+				  </div>
+			  </template>
+
+			  <template if:true={jobOpeningsValue}>
+				  <div class="tabContent1">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					  <c-cems-test email={email}></c-cems-test>
+					  <!-- <c-external-jobs email={email}></c-external-jobs> -->
+				  </div>
+			  </template>
+			  <template if:true={awardValue}>
+				  <div class="tabContent1" style="margin-top:18px;">
+					  <!-- <p class="slds-text-align_left hamburger">{currentContent}</p> -->
+					  <c-awards-with-tabs email={email}></c-awards-with-tabs>
+				  </div>
+			  </template>
+			  <template if:true={interviewSheduleValue}>
+				  <div class="tabContent1" style="overflow-y:hidden;">
+					  <p class="slds-text-align_left hamburger">{currentContent}</p>
+					  <c-cems-interview-scheduler-for-public-site email={email}></c-cems-interview-scheduler-for-public-site>
+				  </div>
+			  </template>
+			  <template if:true={trainings}>
+				  <div class="tabContent1" style="margin-top:25px;">
+					  <!-- <p class="slds-text-align_left hamburger">{currentContent}</p> -->
+					  <c-trainings-with-tabs email={email}></c-trainings-with-tabs>
+						  </div>
+			  </template>
+			  <template if:true={resignationValue}>
+				<div class="tabContent1" style="overflow-y:Scroll;min-height:150vh;width:80vw;margin-top:-200px;">
+					<!-- <p class="slds-text-align_left hamburger">{currentContent}</p> -->
+					<c-cems-job-application-edit-form></c-cems-job-application-edit-form>
+				</div>
+				</template>
+			  <!--<template if:true={resignationValue}>
+				  <div class="tabContent1">
+					  <h2 class="slds-section-title--divider" style="background:#eee; margin-bottom:10px;">
+						  <b class="hamburger">You are viewing: <span class="hamburger">{currentContent}</span></b>
+					  </h2>
+				  </div>
+			  </template>-->
+		  </div>
+		  </lightning-layout-item>
+	  
+  </lightning-layout>
+  <!--End RelatedTopics Section-->
+   </div> 
+
+<!-- </template> -->
+</template>

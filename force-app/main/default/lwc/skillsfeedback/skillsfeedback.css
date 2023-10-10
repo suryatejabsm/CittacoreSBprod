@@ -1,0 +1,109 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .skill-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.2rem; /* Adjust this value to decrease the top space */
+  
+  
+  }
+  
+  .skill-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+  
+  .rating-container {
+    flex: 1;
+    margin-bottom: 0.6rem;
+  }
+  
+  .comment-container {
+    flex: 2;
+    margin-bottom: 0.6rem;
+  }
+  
+  .rating-input {
+    width: 180px;
+  }
+  
+  .comment-textarea {
+    resize: vertical;
+    height: 60px;
+    margin-top: 0.5rem;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+  
+  .container table {
+    background-color: #f9f9f9;
+    border-collapse: collapse; /* Merge table borders */
+    border-spacing: 0; /* Remove spacing between table cells */
+  }
+  
+  .container tbody tr {
+    height: 25px; /* Adjust the height as needed */
+  }
+  
+  .container th,
+  .container td {
+    padding: 4px 8px; /* Adjust the padding as needed */
+  }
+  
+  .container thead th {
+    background-color: #e0e0e0;
+  }
+  
+  .container tbody tr:nth-child(odd) {
+    background-color: #fce4ec; /* Light Pink */
+  }
+  
+  .container tbody tr:nth-child(even) {
+    background-color: #bbdefb; /* Light Blue */
+  }
+  
+  .scroll-container {
+    border: 1px solid #d45d5d;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  .scroll-text {
+    text-align: right;
+    transform: translateX(100%);
+    animation: my-animation 15s linear infinite;
+  }
+  
+  @keyframes my-animation {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .button-container .slds-text-align_left lightning-button {
+    background-color: #ff9999;
+    color: white;
+  }
+  
+  .button-container .slds-text-align_center lightning-button {
+    background-color: #99ccff;
+    color: white;
+  }
+  
+  .button-container .slds-text-align_right lightning-button {
+    background-color: #66cc99;
+    color: white;
+  }

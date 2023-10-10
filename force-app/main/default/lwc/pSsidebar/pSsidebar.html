@@ -1,0 +1,61 @@
+<template>
+	<div class="navbar-header">
+		<lightning-button-icon
+		  icon-name="utility:rows"
+		  alternative-text="Toggle Navigation"
+		  onclick={toggleNavigation}
+		  class={toggleIconClass}
+		></lightning-button-icon>
+	  </div>
+	  <template if:true={isNavigationVisible}>
+	<lightning-card>	  
+		<lightning-layout style="margin-top:-24px;padding-top:0;">
+			<lightning-layout-item class="llitem">
+				<lightning-vertical-navigation selected-item={selectedItem} onselect={changeHandleAction}
+					class="navigation">
+					<lightning-vertical-navigation-section class="sidebarnav">
+						<lightning-vertical-navigation-item label="Home" name="Home">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="Personal Details" name="PersonalDetails">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="My projects" name="MyProjects">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="My Performance" name="MyPerformance">
+						</lightning-vertical-navigation-item>
+						<lightning-vertical-navigation-item label="Leaves" name="Leaves">
+						</lightning-vertical-navigation-item>
+                        <lightning-vertical-navigation-item label="Job Openings" name="jobopenings">
+						</lightning-vertical-navigation-item>
+                        <lightning-vertical-navigation-item label="Awards" name="Awards">
+						</lightning-vertical-navigation-item>
+                        <lightning-vertical-navigation-item label="Interview Schedule" name="InterviewSchedule">
+						</lightning-vertical-navigation-item>
+                        <lightning-vertical-navigation-item label="Resignation" name="Resignation">
+						</lightning-vertical-navigation-item>
+                        <lightning-vertical-navigation-item label="Pre Screening" name="Pre Screening">
+						</lightning-vertical-navigation-item>
+						<!-- <lightning-vertical-navigation-item label="Salesforce LWC" name="salesforceLwc"></lightning-vertical-navigation-item> -->
+					</lightning-vertical-navigation-section>
+				</lightning-vertical-navigation>
+			</lightning-layout-item>
+
+			<lightning-layout-item padding="around-medium">
+				<h2 class="slds-section-title--divider" style="background:#eee; margin-bottom:10px;">
+					<strong>You Are Viewing: <span style="color:#0000ff;">{currentContent}</span></strong></h2>
+				<!-- connecting another component on click-->
+
+				<template if:true={jobopeningsValue}>
+					<div class="tabContent1">
+						<c-internal-job-openings></c-internal-job-openings>
+					</div>
+				</template>
+			</lightning-layout-item>
+		</lightning-layout>
+
+		<!--End RelatedTopics Section-->
+
+		<!-- </div> -->
+	
+	</lightning-card>
+</template>
+</template>

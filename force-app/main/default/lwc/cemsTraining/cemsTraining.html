@@ -1,0 +1,70 @@
+<template>
+  <div style="overflow: auto; height: 350px;">
+    <div style="border: 1px solid #d3d3d3; border-radius: 4px; max-height: 100%; overflow: auto;">
+      <table style="table-layout: fixed;"> <thead style="height:45px;">
+      <tr>
+        <th style="padding-left:5px;">Learning Name</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <td>Mandatory</td>
+      </tr>
+    </thead>
+    <tbody>
+      <template for:each={displayedTrainingList} for:item="training">
+        <tr key={training.Id} class="toggle-btn" style="height:40px;margin-left:5px;border-top:1px solid #d3d3d3;border-bottom:1px solid #d3d3d3; border-spacing: 0;">
+          <td style="padding-left:5px;">
+            <lightning-button-icon
+              data-value={training.Id}
+              onclick={handleToggleClick}
+              icon-name="utility:chevronright"
+              alternative-text="Toggle chevronright"
+              title="Toggle chevronright"
+              label="Show/Hide"
+              >
+
+            </lightning-button-icon>
+            <span>{training.learningName}</span>
+          </td>
+          <!-- <td>{training.CEMS_Employee_Name__r.Name}</td> -->
+          <td>{training.CEMS_Status__c}</td>
+          <td>{training.CEMS_Due_Date__c}</td>
+          <td>{training.CEMS_Mandatory__c}</td>
+
+        </tr>
+        <template if:true={training.isExpanded}>
+          <tr key={training.Id} >
+            <td colspan="4">
+              <section class="slds-accordion__section slds-is-open">
+                <div class="accordion">
+                  <div class="row-container">
+                   <div class="column">
+                  <template if:true={training.learningName}>
+                    <p><strong>Learning Name:</strong> {training.CEMS_Learning_Name__r.CEMS_Learning_Name__c}</p>
+                  </template>
+                    <p><strong>Employee Name:</strong> {training.CEMS_Employee_Name__r.Name}</p>
+                    <p><strong>Specific:</strong> {training.CEMS_Specific__c}</p>
+                    </div>
+                    <div class="column">
+                    <p><strong>Assessment Link:</strong> {training.CEMS_Assessment_Link__c}</p>
+                    <p><strong>Assessment Score:</strong> {training.CEMS_Assessment_Score__c}</p>
+                    <p><strong>Assessment Status:</strong> {training.CEMS_Assessment_Status__c}</p>
+                  </div>
+                </div>
+                  </div>
+              </section>
+            </td>
+          </tr>
+        </template>
+      </template>
+    </tbody>
+  </table>
+</div>
+  </div>
+  <template if:true={showPagination}>
+    <template if:true={totalRecords}>
+      <div class="slds-float_right slds-size_1-of-1" style="margin-top:20px;z-index:2;">
+        <c-pagination totalrecords={totalRecords} page-size={pageSize} onpagination={handlePagination}></c-pagination>
+      </div>
+    </template>
+  </template>
+</template>

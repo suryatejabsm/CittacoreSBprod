@@ -1,0 +1,123 @@
+<template>
+    <lightning-card>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                    title="Close" onclick={handleClose}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Update Interview Panel</h1>
+                </div>
+
+                <lightning-record-edit-form 
+                    object-api-name={objectName}
+                    record-id={recordId}
+                    onsuccess={handleSuccess}
+                >
+                    <lightning-messages></lightning-messages>
+                    <div class="input-fields-container">
+                        <lightning-input-field field-name={fields.nameField}></lightning-input-field>
+                        <lightning-input-field field-name={fields.positionField}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer1Field}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer2Field}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer3Field}></lightning-input-field>
+                    
+
+                    <footer class="slds-modal__footer slds-modal__footer_directional">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <c-delete-interviews record-id={recordId}></c-delete-interviews>  
+                            <lightning-button onclick={handleReset} variant="destructive-text" label="Reset Panel"></lightning-button>
+                            <lightning-button variant="brand-outline" type="submit" label="Save Panel"></lightning-button>
+                            <lightning-button onclick={handleClose} variant="destructive-text" label="Close Panel"></lightning-button>                      
+                        </div>
+                    </footer> 
+                    </div>   
+                </lightning-record-edit-form>
+            </div>          
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </lightning-card>
+</template>
+<!--template>
+    <lightning-card>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+        <div class="slds-modal__container">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            title="Close" onclick={handleClose}>
+            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                size="small"></lightning-icon>
+          </button>
+          <div class="slds-modal__header">
+            <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Update Interview Panel</h1>
+        </div>
+        
+                        <lightning-record-edit-form 
+                            object-api-name={objectName}
+                            record-id={recordId}
+                            onsuccess={handleSuccess}
+                        >
+                            <lightning-messages></lightning-messages>
+                            <div class="input-fields-container">
+                            <lightning-input-field field-name={fields.nameField}></lightning-input-field>
+                            <lightning-input-field field-name={fields.positionField}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interviewer1Field}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interviewer2Field}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interviewer3Field}></lightning-input-field>
+                            </div>
+                            <footer class="slds-modal__footer">
+                                <div  class="slds-grid slds-grid--align-spread">
+                                         <c-delete-interviews record-id={recordId}></c-delete-interviews>  
+                                        <lightning-button onclick={handleReset} variant="destructive-text" label="Reset Panel"></lightning-button>
+                                        <lightning-button variant="brand-outline" type="submit" label="Save Panel"></lightning-button>
+                                        <lightning-button onclick={handleClose} variant="destructive-text" label="Close Panel"></lightning-button>                      
+                                </div>
+                            </footer>    
+                        </lightning-record-edit-form>
+                    </div>          
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+        </lightning-card>
+</template-->
+
+<!--template>
+    <lightning-card>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_small">
+            <div class="slds-modal__container">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                    title="Close" onclick={handleClose}>
+                    <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse" size="small"></lightning-icon>
+                </button>
+                <div class="slds-modal__header">
+                    <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Update Interview Panel</h1>
+                </div>
+
+                <lightning-record-edit-form 
+                    object-api-name={objectName}
+                    record-id={recordId}
+                    onsuccess={handleSuccess}
+                >
+                    <lightning-messages></lightning-messages>
+                    <div class="input-fields-container">
+                        <lightning-input-field field-name={fields.nameField}></lightning-input-field>
+                        <lightning-input-field field-name={fields.positionField}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer1Field}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer2Field}></lightning-input-field>
+                        <lightning-input-field field-name={fields.interviewer3Field}></lightning-input-field>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                        <div class="slds-grid slds-grid_align-spread">
+                            <c-delete-interviews record-id={recordId}></c-delete-interviews>  
+                            <lightning-button onclick={handleReset} variant="destructive-text" label="Reset Panel"></lightning-button>
+                            <lightning-button variant="brand-outline" type="submit" label="Save Panel"></lightning-button>
+                            <lightning-button onclick={handleClose} variant="destructive-text" label="Close Panel"></lightning-button>                      
+                        </div>
+                    </footer>    
+                </lightning-record-edit-form>
+            </div>          
+        </section>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </lightning-card>
+</template-->

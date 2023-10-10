@@ -1,0 +1,101 @@
+<template>
+  <lightning-card>
+    
+    <template if:true={jobApplications}>
+      <template if:true={jobApplications.length}>
+        <div style="display: flex; min-height: 300px; flex: 1; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+          <lightning-datatable key-field="Id" data={jobApplications} columns={columns} hide-checkbox-column="true" onrowaction={handleRowAction}>
+          </lightning-datatable>
+        </div>
+      </template>
+      <template if:false={jobApplications.length}>
+        <!-- Render the "No job applications" message -->
+        <div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+          No job applications.
+        </div>
+      </template>
+    </template>
+    <template if:false={jobApplications}>
+      <!-- Render a loading indicator or placeholder if jobApplications is undefined -->
+      <div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+        <div class="slds-spinner slds-spinner_medium"></div>
+        <p>Loading...</p>
+      </div>
+    </template>
+    <template if:true={modalContainer}>	
+			<section class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container" style="min-width:90%;">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={closeModalAction}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+						</button>
+						<h2 class="slds-text-heading_medium slds-hyphenate">Job Application Detail</h2>
+					</header>
+
+					<div class="slds-modal__content slds-p-around_medium">
+        <lightning-record-edit-form record-id={displayModelRow.Id} object-api-name="CEMS_Job_Application__c">
+			  <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="CEMS_First_Name__c"></lightning-input-field>
+              <lightning-input-field field-name="CEMS_Last_Name__c"></lightning-input-field>
+              <lightning-input-field field-name="CEMS_Email__c"></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="CEMS_Stage__c"></lightning-input-field>
+              <lightning-input-field field-name="CEMS_Status__c" data-name = "Status"></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="CEMS_Screening_Exam_Score__c"></lightning-input-field>
+              <lightning-input-field field-name="CEMS_Results__c"></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="CEMS_Negotiated_Salary__c"></lightning-input-field>
+              <lightning-input-field field-name="CEMS_Expected_Salary__c"></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="Date_of_Joining__c"></lightning-input-field>
+              <lightning-input-field field-name="Offered_Level__c"></lightning-input-field>
+            </div>
+            <div class="slds-col slds-size_1-of-2">
+              <lightning-input-field field-name="Offered_Position__c"></lightning-input-field>
+              <lightning-input-field field-name="Offered_salary__c"></lightning-input-field>
+            </div>
+
+          </div>
+         
+						</lightning-record-edit-form>
+					</div>
+					
+					<footer class="slds-modal__footer">
+             <div class="slds-m-top_medium">
+
+
+               <template if:true={preScreenButton}>
+              <lightning-button variant="brand" label="Pre Screening" onclick={showPreScreen}></lightning-button>
+              <template if:true={showPrescreening}>
+    
+            <c-prescreening2 record-id={selectedRecordId} if:true={isModalOpen}></c-prescreening2>
+            <lightning-button variant="brand" label="Close Pre Screening" onclick={hidePreScreen}></lightning-button>
+  </template>
+              </template>
+               &nbsp; &nbsp;
+
+              <template if:true={showOfferLetter}>
+              <lightning-button variant="brand" label="Offer Letter" onclick={sendOfferLetter}></lightning-button>
+              </template>
+            
+              &nbsp; &nbsp;
+              <lightning-button variant="brand" label="Save" type="submit" onclick={handleSave}></lightning-button>
+           
+            </div>
+                
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+    
+  </lightning-card>
+</template>

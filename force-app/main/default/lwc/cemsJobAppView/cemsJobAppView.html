@@ -1,0 +1,8 @@
+<template>
+    <lightning-card>
+       <div style="display: flex; min-height: 300px; flex: 1; box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+            <lightning-datatable key-field="Id" data={jobApplications} columns={columns} hide-checkbox-column="true" onrowaction={handleRowAction}>
+            </lightning-datatable>
+          </div>
+         </lightning-card>
+  </template>

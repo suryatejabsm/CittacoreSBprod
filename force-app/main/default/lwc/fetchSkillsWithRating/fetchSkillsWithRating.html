@@ -1,0 +1,177 @@
+<!--<template>
+    <lightning-card>
+        
+            <div class="slds-box slds-theme_shade slds-theme_alert-texture">
+                <h2 class="slds-text-heading_medium slds-text-color_success slds-p-bottom_small slds-border_bottom">
+                    <lightning-icon icon-name="standard:feedback" size="medium" class="slds-m-right_small"></lightning-icon>
+                    Technical Skills Feedback Details
+                </h2>
+            </div>
+            <lightning-record-view-form record-id={recordId} object-api-name="CEMS_Internal_Scheduler__c">
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_1__c"></lightning-output-field>                   
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_1_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_1_Comment__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_2__c"></lightning-output-field>                   
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_2_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_2_Comment__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_3__c"></lightning-output-field>                   
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_3_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_3_Comment__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_4__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_4_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_4_Comment__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_5__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_5_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_5_Comment__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_6__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_6_Rating__c"></lightning-output-field>
+                    </div>
+                    <div class="slds-col slds-size_6-of-12">
+                        <lightning-output-field field-name="CEMS_Skill_6_Comment__c"></lightning-output-field>
+                    </div>
+                </div>
+            </lightning-record-view-form>
+            
+            </lightning-card>
+</template>-->
+<!--<template>
+    <lightning-card title="Feedback Details">
+        <div class="slds-box">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_striped slds-table_compact">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <th class="slds-text-align_center slds-cell-wrap">Skill</th>
+                    <th class="slds-text-align_center slds-cell-wrap">Rating</th>
+                    <th class="slds-text-align_center slds-cell-wrap">Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill1}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill1Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill1Comment}</td>
+                </tr>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill2}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill2Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill2Comment}</td>
+                </tr>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill3}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill3Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill3Comment}</td>
+                </tr>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill4}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill4Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill4Comment}</td>
+                </tr>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill5}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill5Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill5Comment}</td>
+                </tr>
+                <tr>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill6}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill6Rating}</td>
+                    <td class="slds-text-align_center slds-cell-wrap">{skill6Comment}</td>
+                </tr>        
+            </tbody>
+        </table>
+        <div class="slds-p-around_medium slds-text-heading_small slds-text-align_left" >
+            Feedback Comment:
+            <p class="slds-m-around_medium slds-text-body_regular slds-box">
+                {feedback}
+            </p>
+        </div>
+    </div>
+    </lightning-card>
+</template>-->
+
+<template>
+    <lightning-card title="Feedback Details">
+        <div class="slds-box custom-table-container">
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_fixed-layout slds-table_striped slds-table_compact custom-table">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th class="slds-text-align_center slds-cell-wrap custom-column">Skill</th>
+                        <th class="slds-text-align_center slds-cell-wrap custom-column">Rating</th>
+                        <th class="slds-text-align_center slds-cell-wrap">Comment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill1}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill1Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill1Comment}</td>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill2}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill2Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill2Comment}</td>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill3}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill3Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill3Comment}</td>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill4}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill4Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill4Comment}</td>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill5}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill5Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill5Comment}</td>
+                    </tr>
+                    <tr>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill6}</td>
+                        <td class="slds-text-align_center slds-cell-wrap custom-column">{skill6Rating}</td>
+                        <td class="slds-text-align_center slds-cell-wrap">{skill6Comment}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slds-p-around_medium slds-text-heading_small slds-text-align_left">
+            Feedback Comment:
+            <p class="slds-m-around_medium slds-text-body_regular slds-box">
+                {feedback}
+            </p>
+        </div>
+    </lightning-card>
+</template>

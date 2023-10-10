@@ -1,0 +1,8 @@
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.slds-spinner_container {
+    top: 50% !important;
+    bottom: 50% !important;
+}

@@ -1,0 +1,41 @@
+.container {
+    background-color: #fff; /* Set your desired background color here */
+    /* height:80vh; */
+}
+
+
+.carousel-container {
+background-color: #fff; /* Set your desired background color here */
+/* margin-bottom: 20px; */
+
+}
+
+.slds-carousel__image-overlay.slds-grid {
+display: none; /* Hide the footer content */
+}
+.slds-carousel__image-description {
+display: none; /* Hide the description */
+}
+
+.slds-carousel__image-alternative-text {
+display: none; /* Hide the alternative text */
+}
+.slds-carousel__image {
+object-fit: cover;
+height: 100%; 
+}
+
+
+.slds-carousel__image-content {
+padding-bottom: 0; /* Remove white space at the bottom of the card */
+}
+
+.content-container {
+    padding: 20px;
+    background-color: #fff; /* Set your desired content background color here */
+}
+
+.textStyle {
+    font-size: 16px;
+    color: #333;
+}

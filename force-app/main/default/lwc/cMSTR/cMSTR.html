@@ -1,0 +1,21 @@
+<template>
+    <lightning-messages></lightning-messages>
+    <div class="slds-grid slds-wrap" onmousehover={handleMousehover} onmouseout={handleMouseOut}>
+        <div class="card-container">
+            <template for:each={employeeTrainingList} for:item="training">
+                //<div key={training.Id} class="card" onmouseover={handleTrainingHover} data-training-id={training.Id}>
+                    <p><strong>Employee Name:</strong> {training.CEMS_Employee_Name__r.Name}</p>
+
+                    <template if:true={training.CEMS_Learning_Name__c}>
+                        <p><strong>Learning Name:</strong> {training.CEMS_Learning_Name__r.CEMS_Learning_Name__c}</p>
+                    </template>
+                    <template if:true={training.CEMS_Certification_Name__c}>
+                        <p><strong>Certification Name:</strong> {training.CEMS_Certification_Name__r.CEMS_Certificate_Name__c}</p>
+                    </template>
+                    <p><strong>Status:</strong> {training.CEMS_Status__c}</p>
+                    <p><strong>Due Date:</strong> {training.CEMS_Due_Date__c}</p>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

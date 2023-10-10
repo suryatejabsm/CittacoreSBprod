@@ -1,0 +1,43 @@
+<template>
+	
+	<div class="container">
+		<div style="position:absolute;top:100px;text-align:center;margin-left:-55%;">
+			<c-custom-toast-messages timeout={timeout} sticky={sticky}></c-custom-toast-messages>
+		</div>
+		<lightning-button class="myButton" label="LOGIN" variant="brand" onclick={handleLogin} style="margin:10px;">
+		</lightning-button>
+	</div>
+    <div class="container">
+        <template if:true={isPopupOpen}>
+            <!-- Login Popup -->
+            <div class="login-popup">
+                <h2>Login</h2>
+                <template if:false={isOtpGenerated}>
+                    <div class="login-form">
+                        <label for="username">Employee ID</label>
+                        <input type="text" data-id="username" placeholder="Enter Employee ID" />
+                        <label for="emailid">Email</label>
+                        <input type="email" data-id="emailid" placeholder="Enter Email" />
+                        <button class="login-button" onclick={handleOtp}>Generate OTP</button>
+                    </div>
+                </template>
+                <template if:true={isOtpGenerated}>
+                    <div class="otp-form">
+                        <label for="otp">OTP</label>
+                        <input type="text" data-id="otp" placeholder="Enter OTP" />
+                        <button class="otp-button" onclick={validateOtp}>Validate OTP</button>
+                    </div>
+                </template>
+                <div class="cancel-button">
+                    <button onclick={handleClose}>Cancel</button>
+                </div>
+            </div>
+        </template>
+        <template if:false={isPopupOpen}>
+            <!-- User Info -->
+            <div class="user-info">
+                <h2>Welcome, {loggedInName}</h2>
+            </div>
+        </template>
+    </div>
+</template>

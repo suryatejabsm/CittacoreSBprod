@@ -1,0 +1,41 @@
+<template>
+    <section class="contact-us-section">
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-50">
+                <div class="elementor-widget-container">
+                    <h1 class="elementor-heading-title elementor-size-default">Contact Us</h1>
+                    <div class="company-info">
+                        <img src={companyLogoUrl} alt="Company Logo" />
+                        <div class="contact-details">
+                            <p>
+                                <strong>Email:</strong> {companyEmail}
+                            </p>
+                            <p>
+                                <strong>LinkedIn:</strong>
+                                <a href={linkedInUrl} target="_blank" rel="noopener noreferrer">{linkedInText}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="elementor-column elementor-col-50">
+                <div class="elementor-widget-container">
+                    <img src={companyLogoUrl} alt="Company Logo" />
+                </div>
+            </div>
+        </div>
+        <div class="elementor-container elementor-column-gap-default">
+            <div class="elementor-column elementor-col-100">
+                <div class="elementor-widget-container">
+                    <h3 class="elementor-heading-title elementor-size-default">India</h3>
+                    <div class="company-address">
+                        <p>Redbrick Offices, Level 1</p>
+                        <p>2A & 2B, Octave Block, Parcel 4, Gate No 2</p>
+                        <p>Salarpuria Knowledge City, Inorbit Road</p>
+                        <p>Raidurg. Hyderabad 500081</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

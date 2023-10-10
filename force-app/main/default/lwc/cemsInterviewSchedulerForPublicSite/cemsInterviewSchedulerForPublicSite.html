@@ -1,0 +1,240 @@
+<!--
+<template>
+	<lightning-card>
+
+		<c-create-interview-scheduler onscheduleinterview={handleScheduleInterview}
+			onopenscheduleinterview={handleOpenScheduleInterview}>
+		</c-create-interview-scheduler>
+		<template if:true={showFormInParent} >
+			 <div class="slds-m-around_medium" style="margin-top:-25px;">
+					<lightning-input type="datetime-local" label="" value={selectedDateTime} onchange={handleDateTimeChange}></lightning-input>
+				</div>
+	      
+				<div class="slds-m-around_medium" style="width:180px;margin-top:80px;float:right;">
+					<lightning-combobox
+						label="Select Round"
+						options={picklistValues}
+						onchange={handleRoundChange}
+					></lightning-combobox>
+				</div> 
+			<div class="slds-grid slds-gutters" style="margin-top:-40px;">
+				<div class="slds-col">
+					<lightning-input type="date" label="Select Date" value={selectedDateTime}
+						onchange={handleDateTimeChange} data-id="resetPicklist"></lightning-input>
+				</div>
+				<div class="slds-col">
+					<lightning-combobox label="Select Round" options={picklistValues}
+						onchange={handleRoundChange} data-id="resetPicklist"></lightning-combobox>
+				</div>
+                <div class="slds-col" style="margin-top:24px;">
+                <lightning-button variant="brand-outline" label="ResetFilter" title="titleName" onclick={handleResetFilter}></lightning-button>
+            </div>
+			</div>
+			<br/>
+			<template if:true={interviewData}>
+			<template if:true={interviewData.length}>
+				<div style="display: flex;min-height: 300px; flex: 1;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+						<lightning-datatable key-field="Id" data={interviewData} columns={columns}
+							hide-checkbox-column="true" onrowaction={handleRowAction}>
+						</lightning-datatable>
+			</div>
+		
+		</template>
+		<template if:false={interviewData.length}>
+			
+			<div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+			  No interviews scheduled.
+			</div>
+		  </template>
+		</template>
+	</template>
+	<template if:false={interviewData}>
+		
+		<div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+		  <div class="slds-spinner slds-spinner_medium"></div>
+		  <p>Loading...</p>
+		</div>
+	  </template>
+		<lightning-datatable data={interviewData} columns={columns} key-field="id" hide-checkbox-column="true"
+			onrowaction={handleRowAction}></lightning-datatable> 
+		<template if:true={modalContainer}>
+			
+			<section class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container" style="min-width:90%;">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={closeModalAction}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+						</button>
+						<h2 class="slds-text-heading_medium slds-hyphenate">Interview Schedule Detail</h2>
+					</header>
+
+					<div class="slds-modal__content slds-p-around_medium">
+						<table class="slds-table slds-table_bordered slds-table_col-bordered slds-table_cell-buffer"
+							style="width:100%;">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Applicant</th>
+									<th>Status</th>
+									<th>Panel</th>
+									<th>Round</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>{displayModelRow.CEMS_Interview_Start_Time__c}</td>
+									<td>{displayModelRow.Name}</td>
+									<td>{displayModelRow.CEMS_Interview_Status__c}</td>
+									<td>{displayModelRow.CEMS_Interview_Panel__r.Name}</td>
+									<td>{displayModelRow.CEMS_Interview_Round__c}</td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<div if:true={shouldDisplayFeedback}>
+						<c-interview-feedback record-id={recordid} ></c-interview-feedback>
+					   
+						</div>
+						  
+						
+					</div>
+					
+					<footer class="slds-modal__footer">
+						<lightning-button variant="brand" label="Close" title="Close" onclick={closeModalAction}>
+						</lightning-button>
+					</footer>
+				</div>
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+	</lightning-card>
+</template>-->
+
+<template>
+	<!-- <lightning-card> -->
+		<c-custom-toast-messages></c-custom-toast-messages>
+		<div class="card" style="overflow-x:hidden;max-height:70vh;margin:0;padding:0;">
+		<template if:false={interviewData1}>
+			<!-- Render a loading indicator or placeholder if interviewData is undefined -->
+			<div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+				<div class="slds-spinner slds-spinner_medium"></div>
+				<p>Loading...</p>
+			</div>
+		</template>
+		<template if:true={showFormInParent}>
+
+			<template if:true={interviewData1}>
+				<template if:true={interviewData1.length}>
+					<div class="slds-grid slds-gutters" style="padding-left:13%;">
+						<div class="slds-col">
+							<lightning-input type="date" label="Date" value={selectedDateTime}
+								onchange={handleDateTimeChange} data-id="resetPicklist"></lightning-input>
+						</div>
+						<div class="slds-col">
+							<lightning-combobox label="Round" options={picklistValues} onchange={handleRoundChange}
+								data-id="resetPicklist"></lightning-combobox>
+						</div>
+						<div class="slds-col" style="margin-top: 24px;">
+							<lightning-button variant="brand-outline" label="Reset Filter" title="titleName"
+								onclick={handleResetFilter}></lightning-button>
+						</div>
+					</div>
+					<br />
+					<div class="datatable-container">
+						  <lightning-datatable key-field="Id" data={interviewData1} columns={columns}
+							hide-checkbox-column="true" onrowaction={handleRowAction}>
+							<!-- class="slds-table slds-table_bordered slds-table_col-bordered slds-table_cell-buffer"> -->
+						</lightning-datatable>
+							 <!-- <table class="custom-table">
+								<thead>
+									<tr>
+										<th>Feedback</th>
+										<th>Date</th>
+										<th>Applicant</th>
+										<th>Status</th>
+										<th>Panel</th>
+										<th>Round</th>
+										<th>Feedback Due</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template for:each={interviewData1} for:item="item">
+										<tr key={item.id}>
+											<td>
+												<lightning-button-icon
+													icon-name="action:preview"
+													title="Preview"
+													variant="border-filled"
+													alternative-text="View"
+													data-record-id={item.Id}
+													onclick={handleRowAction1}
+												></lightning-button-icon>
+											</td>
+											<td>{item.formattedDate}</td>
+											<td>{item.Name}</td>
+											<td>{item.CEMS_Interview_Status__c}</td>
+											<td>{item.CEMS_Interview_Panel__r.Name}</td>
+											<td>{item.CEMS_Interview_Round__c}</td>
+											<td>{item.CEMS_IsFeedbackSubmitted__c}</td>
+										</tr>
+									</template>
+								</tbody>
+							</table>  -->
+						
+					</div>
+			
+				</template>
+				<template if:false={interviewData1.length}>
+					<!-- Render the "No interviews scheduled" message -->
+					<div class="slds-text-align_center slds-text-color_default slds-m-around_medium">
+						No interviews scheduled.
+					</div>
+				</template>
+			</template>
+		</template>
+		<template if:true={modalContainer}>
+			<section class="slds-modal slds-fade-in-open">
+				<div class="slds-modal__container"
+					style="min-width: 90%;margin-top:46px;z-index:99999999999999999999999999;">
+					<header class="slds-modal__header">
+						<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+							title="Close" onclick={closeModalAction}>
+							<lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+								size="small"></lightning-icon>
+						</button>
+
+					</header>
+
+					<template if:true={shouldDisplayFeedback}>
+						<c-interview-feedback record-id={recordid}></c-interview-feedback>
+					</template>
+
+					<template if:true={shouldDisplayFeedback1}>
+						<c-fetch-skills-with-rating record-id={recordid}></c-fetch-skills-with-rating>
+					</template>
+
+				</div>
+
+				<footer class="slds-modal__footer">
+					<lightning-button variant="brand" label="Close" title="Close"
+						onclick={closeModalAction}></lightning-button>
+				</footer>
+			
+			</section>
+			<div class="slds-backdrop slds-backdrop_open"></div>
+		</template>
+	
+	
+	</div>
+	<!-- </lightning-card> -->
+	<br/>
+	<template if:true={showPagination}>
+		<template if:true={totalRecords}>
+			<div class="slds-float_right slds-size_1-of-1">
+				<c-pagination totalrecords={totalRecords} page-size={pageSize} onpagination={handlePagination}></c-pagination>
+			</div>
+		</template>
+		</template>
+</template>

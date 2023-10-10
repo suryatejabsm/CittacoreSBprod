@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Employee Details">
+        <template if:true={employee}>
+            <div class="slds-p-horizontal_medium">
+                <!--<lightning-output-field field-name="Name"></lightning-output-field>
+                <lightning-output-field field-name="CEMS_Employee_ID__c"></lightning-output-field>
+                <lightning-output-field field-name="CEMS_Work_Email__c"></lightning-output-field>-->
+                <p><b>Name:</b> {employee.Name}</p>
+                <p><b>Employee ID:</b> {employee.CEMS_Employee_ID__c}</p>
+                <p><b>Email:</b> {employee.CEMS_Work_Email__c}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>

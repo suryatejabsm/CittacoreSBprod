@@ -1,0 +1,37 @@
+<template>
+    
+    <div class="slds-card" style="padding:10px;font-size:16px;">Job Openings</div>
+        <div>
+            <lightning-input type="search" label="Search" onchange={handleSearch}></lightning-input >
+        </div>
+    
+            <div class="slds-form-element__control">
+            <lightning-combobox data-id="technology" name="technology" label="Select Technology" value={selectedTechnology} options={technologyOptions} onchange={handleTechnologyChange}></lightning-combobox>
+            </div>
+        </div>
+    
+         <div class="slds-form-element">
+            <div class="slds-form-element__control">
+                <lightning-combobox data-id="experience" name="experience" label="Select Experience" value={selectedExperience} options={experienceOptions} onchange={handleExperienceChange}></lightning-combobox>
+            </div>
+        </div>
+    
+        <div class="slds-form-element">
+            <div class="slds-form-element__control">
+            <lightning-button variant="brand-outline" label="ResetFilter" title="titleName" onclick={handleResetFilter}></lightning-button>
+            </div>
+        </div>
+       </div>
+             <div class="slds-grid slds-wrap">
+                 <template for:each={filteredJobOpenings} for:item="JobOpening">
+                     <div key={JobOpening.Id} class="slds-card jobOpeningStyles" > 
+                         <p class="locationStyle">{JobOpening.CEMS_Location__c}</p> 
+                         <p class="positionStyle" data-value={JobOpening.Id} onclick={handleClick}> {JobOpening.CEMS_Position__c}</p>
+                         <p class="technologyStyle">Technology - {JobOpening.CEMS_Technology__c}</p>
+                         <p class="experienceStyle">Experience - {JobOpening.CEMS_Experience__c}</p>
+                        </div>
+                 </template>
+             </div>
+        
+    
+    </template>

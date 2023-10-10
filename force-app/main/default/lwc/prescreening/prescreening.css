@@ -1,0 +1,28 @@
+.custom-card {
+  padding: var(--slds-spacing-medium);
+  margin: var(--slds-spacing-medium);
+}
+
+.custom-margin {
+  margin: var(--slds-var-spacing-medium);
+}
+
+.custom-button {
+  background-color: #0070d2;
+  color: #ffffff;
+}
+
+.custom-button:hover {
+  background-color: #005fb2;
+}
+
+@media only screen and (max-width: 600px) {
+  .custom-card {
+      padding: 1rem;
+      margin: 1rem;
+  }
+
+  .custom-margin {
+      margin: 1rem;
+  }
+}

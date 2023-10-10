@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <template for:each={awards} for:item="award">
+            <div key={award.Id} class="card">
+                <div class="card-header">
+                    <img src={award.CEMS_Award_URL__c} alt="AwardIcon" class="custom-icon" />
+                    <p>{award.employeeName}</p>
+                    <p>{award.CEMS_Award__r.Name}</p>
+                    <p>{award.CEMS_Award_Date__c}</p>
+                </div>
+            </div>
+        
+        </template>
+    </div>
+    <br/>
+    <br/>
+    
+    <template if:true={showPagination}>
+      <template if:true={totalRecords}>
+        <div class="slds-float_right slds-size_1-of-1" style="margin-top:-30px;">
+          <c-pagination totalrecords={totalRecords} page-size={pageSize} onpagination={handlePagination}></c-pagination>
+        </div>
+      </template>
+      </template>
+</template>

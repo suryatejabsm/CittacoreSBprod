@@ -1,0 +1,43 @@
+<template>
+    <lightning-card>
+        <div class="slds-m-around_xx-small slds-text-align_center">
+            <lightning-button variant="brand" onclick={handleClick} class="slds-align-middle" label="Edit Interview Panel"></lightning-button>
+        </div>
+        <template if:true={showTemplate}>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Edit Interview Panel</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <!-- Content of the child component goes here -->
+                        <lightning-record-edit-form 
+                            object-api-name={objectName}
+                            record-id={recordId}
+                            onsuccess={handleSuccess}
+                        >
+                            <lightning-messages></lightning-messages>
+                            <lightning-input-field field-name={fields.interviewPanelField}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interviewer1Field}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interview2Field}></lightning-input-field>
+                            <lightning-input-field field-name={fields.interviewer3Field}></lightning-input-field>
+                        </lightning-record-edit-form>
+                    </div>
+                    <footer class="slds-modal__footer slds-modal__footer_directional">
+                        <div class="slds-size_1-of-3">
+                            <lightning-button onclick={handleReset} variant="brand" label="Reset Interview"></lightning-button>
+                        </div>
+                        <div class="slds-size_1-of-3 slds-text-align_center">
+                            <lightning-button variant="success" type="submit" label="Save Interview"></lightning-button>
+                        </div>
+                        <div class="slds-size_1-of-3 slds-text-align_right">
+                            <lightning-button onclick={handleClose} variant="destructive" label="Close Interview"></lightning-button>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </template>
+    </lightning-card>
+</template>
